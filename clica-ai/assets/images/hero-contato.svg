@@ -1,0 +1,119 @@
+<svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg" cx="55%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="#0a0818"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f7971e"/>
+      <stop offset="100%" stop-color="#ffd200"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg)"/>
+
+  <!-- Radio wave rings emanating from center -->
+  <g transform="translate(600, 337)">
+    <circle cx="0" cy="0" r="60" fill="none" stroke="url(#gold)" stroke-width="2.5" filter="url(#glow)" opacity="0.9"/>
+    <circle cx="0" cy="0" r="110" fill="none" stroke="url(#gold)" stroke-width="1.5" filter="url(#glow)" opacity="0.65"/>
+    <circle cx="0" cy="0" r="165" fill="none" stroke="url(#gold)" stroke-width="1" filter="url(#glow)" opacity="0.45"/>
+    <circle cx="0" cy="0" r="225" fill="none" stroke="#f7971e" stroke-width="0.8" opacity="0.3"/>
+    <circle cx="0" cy="0" r="290" fill="none" stroke="#f7971e" stroke-width="0.6" opacity="0.2"/>
+    <circle cx="0" cy="0" r="360" fill="none" stroke="#a78bfa" stroke-width="0.5" opacity="0.12"/>
+    <circle cx="0" cy="0" r="435" fill="none" stroke="#818cf8" stroke-width="0.4" opacity="0.08"/>
+  </g>
+
+  <!-- Central device / phone -->
+  <g transform="translate(600, 337)" filter="url(#glow)">
+    <!-- Phone body -->
+    <rect x="-25" y="-44" width="50" height="88" rx="10" fill="#1e1b4b" stroke="url(#gold)" stroke-width="2.5"/>
+    <!-- Screen -->
+    <rect x="-19" y="-36" width="38" height="68" rx="5" fill="#302b63"/>
+    <!-- WhatsApp icon area -->
+    <circle cx="0" cy="-12" r="14" fill="#25D366" opacity="0.9"/>
+    <path d="M-5,-17 L-5,-7 L0,-4 L5,-7 L5,-17 Z" fill="white" opacity="0.8"/>
+    <path d="M-7,-12 C-7,-16 -4,-19 0,-19 C4,-19 7,-16 7,-12 C7,-8 4,-5 0,-5 C-4,-5 -7,-8 -7,-12 Z" fill="none" stroke="white" stroke-width="1.5"/>
+    <!-- Chat bubble -->
+    <rect x="-16" y="8" width="32" height="18" rx="5" fill="#ffd200" opacity="0.15"/>
+    <rect x="-16" y="8" width="32" height="18" rx="5" fill="none" stroke="#ffd200" stroke-width="1"/>
+    <rect x="-12" y="12" width="20" height="3" rx="1.5" fill="#ffd200" opacity="0.7"/>
+    <rect x="-12" y="18" width="14" height="3" rx="1.5" fill="#ffd200" opacity="0.5"/>
+    <!-- Home button -->
+    <rect x="-8" y="42" width="16" height="4" rx="2" fill="#ffd200" opacity="0.4"/>
+  </g>
+
+  <!-- Floating message bubbles -->
+  <g filter="url(#glow)">
+    <!-- Left messages -->
+    <g transform="translate(260, 230)">
+      <rect x="0" y="0" width="160" height="48" rx="12" rx="12" fill="#25D366" opacity="0.85"/>
+      <polygon points="-10,24 0,18 0,30" fill="#25D366" opacity="0.85"/>
+      <rect x="12" y="12" width="100" height="8" rx="4" fill="white" opacity="0.7"/>
+      <rect x="12" y="26" width="70" height="8" rx="4" fill="white" opacity="0.5"/>
+    </g>
+    <g transform="translate(230, 310)">
+      <rect x="0" y="0" width="130" height="40" rx="10" fill="#302b63" stroke="url(#gold)" stroke-width="1" opacity="0.9"/>
+      <polygon points="-8,20 0,14 0,26" fill="#302b63" opacity="0.9"/>
+      <rect x="12" y="12" width="80" height="7" rx="3.5" fill="#ffd200" opacity="0.5"/>
+      <rect x="12" y="24" width="50" height="7" rx="3.5" fill="#ffd200" opacity="0.35"/>
+    </g>
+
+    <!-- Right messages -->
+    <g transform="translate(780, 210)">
+      <rect x="0" y="0" width="180" height="56" rx="12" fill="#302b63" stroke="url(#gold)" stroke-width="1.5" opacity="0.9"/>
+      <polygon points="190,28 180,22 180,34" fill="#302b63" opacity="0.9"/>
+      <rect x="12" y="14" width="110" height="8" rx="4" fill="#ffd200" opacity="0.6"/>
+      <rect x="12" y="28" width="80" height="8" rx="4" fill="#ffd200" opacity="0.4"/>
+      <rect x="12" y="38" width="55" height="8" rx="4" fill="#ffd200" opacity="0.3"/>
+    </g>
+    <g transform="translate(800, 300)">
+      <rect x="0" y="0" width="140" height="44" rx="10" fill="#1e1b4b" stroke="#a78bfa" stroke-width="1" opacity="0.9"/>
+      <polygon points="150,22 140,16 140,28" fill="#1e1b4b" opacity="0.9"/>
+      <rect x="12" y="13" width="90" height="7" rx="3.5" fill="#c084fc" opacity="0.6"/>
+      <rect x="12" y="25" width="60" height="7" rx="3.5" fill="#c084fc" opacity="0.4"/>
+    </g>
+  </g>
+
+  <!-- Top message: WhatsApp -->
+  <g transform="translate(600, 130)" filter="url(#glow)" opacity="0.9">
+    <rect x="-90" y="-20" width="180" height="40" rx="20" fill="#25D366"/>
+    <polygon points="0,20 -8,20 0,34" fill="#25D366"/>
+    <text x="0" y="6" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="700" fill="white">+55 35 3195-9999</text>
+  </g>
+
+  <!-- Bottom: response time indicator -->
+  <g transform="translate(600, 560)" opacity="0.85">
+    <rect x="-110" y="-22" width="220" height="44" rx="22" fill="#302b63" stroke="url(#gold)" stroke-width="1.5"/>
+    <text x="-15" y="6" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="700" fill="#ffd200">⚡ Resposta em até 2h</text>
+  </g>
+
+  <!-- Email icon node -->
+  <g transform="translate(380, 450)" filter="url(#glow)" opacity="0.8">
+    <circle cx="0" cy="0" r="28" fill="#1e1b4b" stroke="url(#gold)" stroke-width="1.5"/>
+    <rect x="-14" y="-9" width="28" height="18" rx="3" fill="none" stroke="#ffd200" stroke-width="1.5"/>
+    <polyline points="-14,-9 0,2 14,-9" fill="none" stroke="#ffd200" stroke-width="1.5"/>
+  </g>
+  <line x1="407" y1="437" x2="545" y2="345" stroke="url(#gold)" stroke-width="1" stroke-dasharray="4 4" opacity="0.3"/>
+
+  <!-- Location pin node -->
+  <g transform="translate(820, 450)" filter="url(#glow)" opacity="0.8">
+    <circle cx="0" cy="0" r="28" fill="#1e1b4b" stroke="#a78bfa" stroke-width="1.5"/>
+    <circle cx="0" cy="-6" r="9" fill="none" stroke="#a78bfa" stroke-width="1.5"/>
+    <path d="M0,3 L-5,14 L0,18 L5,14 Z" fill="#a78bfa" opacity="0.7"/>
+  </g>
+  <line x1="793" y1="437" x2="655" y2="345" stroke="#a78bfa" stroke-width="1" stroke-dasharray="4 4" opacity="0.3"/>
+
+  <!-- Particles -->
+  <g filter="url(#glow)" opacity="0.7">
+    <circle cx="100" cy="150" r="2.5" fill="#ffd200"/>
+    <circle cx="1100" cy="200" r="2" fill="#f7971e"/>
+    <circle cx="150" cy="550" r="2" fill="#a78bfa"/>
+    <circle cx="1050" cy="520" r="2.5" fill="#c084fc"/>
+    <circle cx="200" cy="350" r="1.5" fill="#ffd200"/>
+    <circle cx="1000" cy="400" r="1.5" fill="#ffd200"/>
+  </g>
+</svg>

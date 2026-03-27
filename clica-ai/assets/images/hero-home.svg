@@ -1,0 +1,161 @@
+<svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg-rg" cx="40%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#302b63"/>
+      <stop offset="100%" stop-color="#0a0818"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f7971e"/>
+      <stop offset="100%" stop-color="#ffd200"/>
+    </linearGradient>
+    <radialGradient id="core-rg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffd200" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#f7971e" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#f7971e" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow-strong">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow-soft">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow-ultra">
+      <feGaussianBlur stdDeviation="12" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#bg-rg)"/>
+
+  <!-- Subtle grid -->
+  <g opacity="0.06" stroke="#a78bfa" stroke-width="0.5">
+    <line x1="0" y1="112" x2="1200" y2="112"/>
+    <line x1="0" y1="225" x2="1200" y2="225"/>
+    <line x1="0" y1="337" x2="1200" y2="337"/>
+    <line x1="0" y1="450" x2="1200" y2="450"/>
+    <line x1="0" y1="562" x2="1200" y2="562"/>
+    <line x1="150" y1="0" x2="150" y2="675"/>
+    <line x1="300" y1="0" x2="300" y2="675"/>
+    <line x1="450" y1="0" x2="450" y2="675"/>
+    <line x1="600" y1="0" x2="600" y2="675"/>
+    <line x1="750" y1="0" x2="750" y2="675"/>
+    <line x1="900" y1="0" x2="900" y2="675"/>
+    <line x1="1050" y1="0" x2="1050" y2="675"/>
+  </g>
+
+  <!-- Neural connections (background layer) -->
+  <g opacity="0.2" stroke="#a78bfa" stroke-width="1" fill="none">
+    <line x1="820" y1="120" x2="960" y2="200"/>
+    <line x1="960" y1="200" x2="1080" y2="150"/>
+    <line x1="960" y1="200" x2="1020" y2="350"/>
+    <line x1="820" y1="120" x2="750" y2="240"/>
+    <line x1="750" y1="240" x2="820" y2="380"/>
+    <line x1="820" y1="380" x2="1020" y2="350"/>
+    <line x1="1020" y1="350" x2="1100" y2="470"/>
+    <line x1="750" y1="240" x2="620" y2="300"/>
+    <line x1="820" y1="380" x2="700" y2="500"/>
+    <line x1="1080" y1="150" x2="1150" y2="280"/>
+    <line x1="1150" y1="280" x2="1020" y2="350"/>
+  </g>
+
+  <!-- Gold neural connections (mid layer) -->
+  <g filter="url(#glow-soft)" opacity="0.5" stroke="url(#gold)" stroke-width="1.5" fill="none">
+    <path d="M720 337 C780 280, 850 310, 900 337"/>
+    <path d="M900 337 C950 310, 1000 350, 1020 320"/>
+    <path d="M720 337 C680 370, 660 420, 700 460"/>
+    <path d="M900 337 C880 400, 840 440, 820 480"/>
+    <path d="M720 337 C700 300, 680 260, 700 220"/>
+    <path d="M900 337 C920 290, 960 270, 980 240"/>
+    <path d="M620 240 C660 270, 690 310, 720 337"/>
+    <path d="M1020 320 C1060 300, 1100 320, 1120 310"/>
+    <path d="M700 220 C730 190, 760 170, 800 160"/>
+    <path d="M980 240 C1000 210, 1030 190, 1060 180"/>
+  </g>
+
+  <!-- Central brain / neural core -->
+  <circle cx="810" cy="337" r="120" fill="url(#core-rg)" opacity="0.4"/>
+  <circle cx="810" cy="337" r="80" fill="none" stroke="url(#gold)" stroke-width="1" stroke-dasharray="4 8" opacity="0.4"/>
+  <circle cx="810" cy="337" r="50" fill="none" stroke="url(#gold)" stroke-width="0.8" opacity="0.6"/>
+
+  <!-- Brain hemisphere lines -->
+  <g filter="url(#glow-soft)" opacity="0.7">
+    <path d="M760 310 C780 295, 800 290, 810 310 C820 295, 840 300, 860 315" fill="none" stroke="#ffd200" stroke-width="1.5"/>
+    <path d="M755 330 C775 315, 795 312, 810 330 C825 315, 845 318, 865 332" fill="none" stroke="#ffd200" stroke-width="1.5"/>
+    <path d="M758 350 C778 338, 798 336, 810 350 C822 338, 842 340, 862 352" fill="none" stroke="#ffd200" stroke-width="1.5"/>
+    <path d="M763 370 C783 360, 800 358, 810 368 C820 360, 837 362, 857 372" fill="none" stroke="#f7971e" stroke-width="1.2"/>
+  </g>
+  <line x1="810" y1="285" x2="810" y2="390" stroke="url(#gold)" stroke-width="1" opacity="0.6"/>
+
+  <!-- Primary neural nodes -->
+  <g filter="url(#glow-strong)">
+    <!-- Central node -->
+    <circle cx="810" cy="337" r="12" fill="url(#gold)" opacity="0.95"/>
+    <!-- Ring 1 nodes -->
+    <circle cx="720" cy="337" r="8" fill="#ffd200" opacity="0.9"/>
+    <circle cx="900" cy="337" r="8" fill="#ffd200" opacity="0.9"/>
+    <circle cx="765" cy="260" r="7" fill="#f7971e" opacity="0.85"/>
+    <circle cx="855" cy="260" r="7" fill="#f7971e" opacity="0.85"/>
+    <circle cx="765" cy="414" r="7" fill="#f7971e" opacity="0.85"/>
+    <circle cx="855" cy="414" r="7" fill="#f7971e" opacity="0.85"/>
+    <!-- Ring 2 nodes -->
+    <circle cx="620" cy="300" r="6" fill="#a78bfa" opacity="0.9"/>
+    <circle cx="620" cy="374" r="6" fill="#a78bfa" opacity="0.9"/>
+    <circle cx="1000" cy="300" r="6" fill="#a78bfa" opacity="0.9"/>
+    <circle cx="1000" cy="374" r="6" fill="#a78bfa" opacity="0.9"/>
+    <circle cx="760" cy="200" r="5" fill="#c084fc" opacity="0.8"/>
+    <circle cx="860" cy="200" r="5" fill="#c084fc" opacity="0.8"/>
+    <circle cx="760" cy="474" r="5" fill="#c084fc" opacity="0.8"/>
+    <circle cx="860" cy="474" r="5" fill="#c084fc" opacity="0.8"/>
+    <!-- Outer nodes -->
+    <circle cx="530" cy="240" r="5" fill="#818cf8" opacity="0.7"/>
+    <circle cx="530" cy="434" r="5" fill="#818cf8" opacity="0.7"/>
+    <circle cx="1090" cy="240" r="5" fill="#818cf8" opacity="0.7"/>
+    <circle cx="1090" cy="434" r="5" fill="#818cf8" opacity="0.7"/>
+    <circle cx="700" cy="150" r="4" fill="#818cf8" opacity="0.6"/>
+    <circle cx="920" cy="150" r="4" fill="#818cf8" opacity="0.6"/>
+    <circle cx="700" cy="524" r="4" fill="#818cf8" opacity="0.6"/>
+    <circle cx="920" cy="524" r="4" fill="#818cf8" opacity="0.6"/>
+  </g>
+
+  <!-- Gold pulse ring -->
+  <circle cx="810" cy="337" r="150" fill="none" stroke="url(#gold)" stroke-width="1.5" stroke-dasharray="2 12" opacity="0.3"/>
+  <circle cx="810" cy="337" r="200" fill="none" stroke="#f7971e" stroke-width="1" stroke-dasharray="1 18" opacity="0.15"/>
+
+  <!-- Data stream lines (left side, decorative) -->
+  <g opacity="0.35" stroke="#c084fc" stroke-width="1" fill="none">
+    <path d="M0 180 Q200 160, 400 200 Q520 220, 560 280"/>
+    <path d="M0 260 Q150 240, 350 270 Q480 285, 540 310"/>
+    <path d="M0 400 Q180 420, 380 410 Q500 405, 545 380"/>
+    <path d="M0 480 Q200 500, 400 480 Q510 465, 555 430"/>
+  </g>
+  <g filter="url(#glow-soft)" opacity="0.5" stroke="#ffd200" stroke-width="1.5" fill="none">
+    <path d="M0 320 Q200 310, 450 330 Q560 338, 620 337"/>
+  </g>
+
+  <!-- Floating geometric accents -->
+  <g opacity="0.12" fill="none" stroke="url(#gold)" stroke-width="1">
+    <polygon points="200,80 230,130 170,130"/>
+    <polygon points="1050,560 1080,610 1020,610"/>
+    <polygon points="100,500 125,545 75,545"/>
+    <rect x="1100" y="80" width="40" height="40" transform="rotate(15, 1120, 100)"/>
+  </g>
+
+  <!-- Small data particles -->
+  <g filter="url(#glow-soft)">
+    <circle cx="450" cy="120" r="2.5" fill="#ffd200" opacity="0.7"/>
+    <circle cx="520" cy="180" r="2" fill="#f7971e" opacity="0.6"/>
+    <circle cx="380" cy="560" r="2.5" fill="#a78bfa" opacity="0.7"/>
+    <circle cx="1100" cy="350" r="2" fill="#ffd200" opacity="0.6"/>
+    <circle cx="150" cy="300" r="3" fill="#c084fc" opacity="0.5"/>
+    <circle cx="200" cy="450" r="2" fill="#ffd200" opacity="0.4"/>
+    <circle cx="1050" cy="200" r="2.5" fill="#f7971e" opacity="0.5"/>
+    <circle cx="350" cy="80" r="2" fill="#a78bfa" opacity="0.4"/>
+  </g>
+
+  <!-- Scanline texture -->
+  <rect width="1200" height="675" fill="none" stroke="#ffffff" stroke-width="0.3" opacity="0.03"
+        style="background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.01) 2px, rgba(255,255,255,0.01) 4px)"/>
+</svg>

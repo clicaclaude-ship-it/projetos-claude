@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "como-automatizar-atendimento-whatsapp-ia",
+    "title": "Como automatizar o atendimento do WhatsApp com Agentes de IA",
+    "category": "tutoriais",
+    "date": "2026-03-25",
+    "thumbnail": "data/thumbnails/atendimento-whatsapp.svg",
+    "excerpt": "Descubra como criar um agente de IA que responde clientes automaticamente no WhatsApp — 24h por dia, sem intervenção humana."
+  },
+  {
+    "slug": "tendencias-ia-2026",
+    "title": "As 5 tendências de IA que vão dominar os negócios em 2026",
+    "category": "tendencias",
+    "date": "2026-03-20",
+    "thumbnail": "data/thumbnails/tendencias-2026.svg",
+    "excerpt": "Agentes autônomos, IA multimodal, automação cognitiva e mais: as tendências que estão moldando o futuro dos negócios."
+  },
+  {
+    "slug": "case-clinica-medica-agendamento-ia",
+    "title": "Case: Como uma clínica médica aumentou 27% a ocupação da agenda com IA",
+    "category": "cases",
+    "date": "2026-03-15",
+    "thumbnail": "data/thumbnails/case-clinica.svg",
+    "excerpt": "A história de como implementamos um agente de IA de agendamento que transformou a operação de uma clínica médica com 8 especialidades."
+  },
+  {
+    "slug": "rpa-vs-ia-qual-a-diferenca",
+    "title": "RPA vs IA: qual a diferença e quando usar cada um?",
+    "category": "tutoriais",
+    "date": "2026-03-10",
+    "thumbnail": "data/thumbnails/rpa-vs-ia.svg",
+    "excerpt": "Entenda as diferenças entre RPA (automação robótica de processos) e IA, e como combiná-los para obter o máximo resultado no seu negócio."
+  },
+  {
+    "slug": "ia-generativa-para-empresas",
+    "title": "IA Generativa para empresas: além do ChatGPT",
+    "category": "tendencias",
+    "date": "2026-03-05",
+    "thumbnail": "data/thumbnails/ia-generativa.svg",
+    "excerpt": "Como as empresas estão usando IA generativa além dos chatbots: geração de relatórios, análise de documentos, criação de conteúdo e muito mais."
+  },
+  {
+    "slug": "case-varejo-reducao-80-chamados-suporte",
+    "title": "Case: Rede varejista resolve 80% dos chamados de suporte automaticamente",
+    "category": "cases",
+    "date": "2026-02-28",
+    "thumbnail": "data/thumbnails/case-varejo.svg",
+    "excerpt": "Veja como uma rede varejista com 12 lojas eliminou a fila de suporte com um agente de IA que responde em menos de 4 segundos."
+  }
+]

@@ -1,0 +1,298 @@
+/* =============================================
+   CLICA AI — Global CSS
+   Tema: Gradient Bold (escuro + dourado)
+   ============================================= */
+
+/* --- Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* --- Variáveis --- */
+:root {
+  --bg-start: #0f0c29;
+  --bg-end: #302b63;
+  --bg-gradient: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+
+  --gold-start: #f7971e;
+  --gold-end: #ffd200;
+  --gold-gradient: linear-gradient(135deg, var(--gold-start), var(--gold-end));
+
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.67);
+  --text-dark: #1a1a2e;
+
+  --card-bg: rgba(255, 255, 255, 0.06);
+  --card-border: rgba(255, 255, 255, 0.12);
+
+  --whatsapp: #25D366;
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 50px;
+
+  --shadow-gold: 0 4px 24px rgba(247, 151, 30, 0.25);
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+  --transition: 0.25s ease;
+
+  --max-width: 1200px;
+  --section-padding: 80px 24px;
+}
+
+/* --- Reset --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* --- Tipografia --- */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.75rem, 4vw, 2.75rem); }
+h3 { font-size: clamp(1.25rem, 2.5vw, 1.75rem); }
+h4 { font-size: 1.25rem; font-weight: 700; }
+
+p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* --- Layout --- */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+section {
+  padding: var(--section-padding);
+}
+
+/* --- Texto dourado --- */
+.text-gold {
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* --- Section label --- */
+.section-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+}
+
+/* --- Divisor --- */
+.divider {
+  width: 60px;
+  height: 3px;
+  background: var(--gold-gradient);
+  border-radius: 2px;
+  margin: 16px auto 0;
+}
+
+/* --- Glassmorphism overlay --- */
+.glass {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* --- Botões --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 32px;
+  border-radius: var(--radius-pill);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: transform var(--transition), box-shadow var(--transition);
+  text-decoration: none;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: var(--gold-gradient);
+  color: var(--text-dark);
+  box-shadow: var(--shadow-gold);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 8px 32px rgba(247, 151, 30, 0.4);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+}
+
+.btn-secondary:hover {
+  border-color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.btn-whatsapp {
+  background: var(--whatsapp);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+}
+
+.btn-whatsapp:hover {
+  box-shadow: 0 8px 32px rgba(37, 211, 102, 0.5);
+}
+
+/* --- Botão WhatsApp flutuante --- */
+.whatsapp-float {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 60px;
+  height: 60px;
+  background: var(--whatsapp);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.45);
+  z-index: 1000;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 32px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-float svg {
+  width: 30px;
+  height: 30px;
+  fill: #fff;
+}
+
+/* --- Utilitários --- */
+.text-center { text-align: center; }
+.mb-8  { margin-bottom: 8px; }
+.mb-16 { margin-bottom: 16px; }
+.mb-24 { margin-bottom: 24px; }
+.mb-40 { margin-bottom: 40px; }
+.mb-56 { margin-bottom: 56px; }
+.mt-40 { margin-top: 40px; }
+.mt-56 { margin-top: 56px; }
+
+/* --- Animações --- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-12px); }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.7s ease forwards;
+}
+
+/* --- Grid utilitário responsivo --- */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.grid-2.gap-md  { gap: 32px; }
+.grid-2.gap-sm  { gap: 24px; }
+.grid-2.align-start { align-items: start; }
+
+/* Responsivo base */
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 56px 20px;
+  }
+
+  .btn {
+    padding: 12px 24px;
+    font-size: 0.9rem;
+  }
+
+  /* Grid colapsa para 1 coluna */
+  .grid-2,
+  .grid-2.gap-md,
+  .grid-2.gap-sm {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  /* Seção de solução: imagem vem depois do texto no mobile */
+  .grid-2.img-first > *:first-child { order: 2; }
+  .grid-2.img-first > *:last-child  { order: 1; }
+
+  /* Imagens de seção: altura máxima no mobile */
+  .grid-2 img {
+    max-height: 280px;
+    width: 100%;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-2 { gap: 28px; }
+
+  h1 { font-size: 1.85rem; }
+  h2 { font-size: 1.5rem; }
+}

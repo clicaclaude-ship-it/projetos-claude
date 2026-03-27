@@ -1,0 +1,132 @@
+<svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="60%" r="70%">
+      <stop offset="0%" stop-color="#1a1040"/>
+      <stop offset="100%" stop-color="#0a0818"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f7971e"/>
+      <stop offset="100%" stop-color="#ffd200"/>
+    </linearGradient>
+    <linearGradient id="bar1" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#f7971e" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#ffd200" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="bar2" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#c084fc" stop-opacity="0.9"/>
+    </linearGradient>
+    <linearGradient id="bar3" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#818cf8" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#a5b4fc" stop-opacity="0.9"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg)"/>
+
+  <!-- Graph grid lines -->
+  <g opacity="0.1" stroke="#818cf8" stroke-width="1">
+    <line x1="200" y1="150" x2="1000" y2="150"/>
+    <line x1="200" y1="250" x2="1000" y2="250"/>
+    <line x1="200" y1="350" x2="1000" y2="350"/>
+    <line x1="200" y1="450" x2="1000" y2="450"/>
+    <line x1="200" y1="150" x2="200" y2="520"/>
+    <line x1="1000" y1="150" x2="1000" y2="520"/>
+  </g>
+
+  <!-- Axis -->
+  <g opacity="0.4" stroke="#a78bfa" stroke-width="1.5">
+    <line x1="220" y1="140" x2="220" y2="520"/>
+    <line x1="220" y1="520" x2="1000" y2="520"/>
+  </g>
+
+  <!-- Bar chart — growing bars representing results -->
+  <!-- Bar 1: Varejo 80% -->
+  <rect x="280" y="356" width="70" height="164" rx="6" fill="url(#bar1)" filter="url(#glow)" opacity="0.9"/>
+  <rect x="280" y="356" width="70" height="4" rx="3" fill="#ffd200" opacity="0.9" filter="url(#glow)"/>
+
+  <!-- Bar 2: Indústria 97% -->
+  <rect x="400" y="193" width="70" height="327" rx="6" fill="url(#bar1)" filter="url(#glow)" opacity="0.95"/>
+  <rect x="400" y="193" width="70" height="4" rx="3" fill="#ffd200" opacity="0.9" filter="url(#glow)"/>
+
+  <!-- Bar 3: Saúde 27pp -->
+  <rect x="520" y="303" width="70" height="217" rx="6" fill="url(#bar2)" filter="url(#glow)" opacity="0.9"/>
+  <rect x="520" y="303" width="70" height="4" rx="3" fill="#c084fc" opacity="0.9" filter="url(#glow)"/>
+
+  <!-- Bar 4: Logística 85% -->
+  <rect x="640" y="240" width="70" height="280" rx="6" fill="url(#bar2)" filter="url(#glow)" opacity="0.85"/>
+  <rect x="640" y="240" width="70" height="4" rx="3" fill="#a78bfa" opacity="0.9" filter="url(#glow)"/>
+
+  <!-- Bar 5: Financeiro 60% -->
+  <rect x="760" y="356" width="70" height="164" rx="6" fill="url(#bar3)" filter="url(#glow)" opacity="0.85"/>
+  <rect x="760" y="356" width="70" height="4" rx="3" fill="#818cf8" opacity="0.9" filter="url(#glow)"/>
+
+  <!-- Bar 6: RH 96% -->
+  <rect x="880" y="208" width="70" height="312" rx="6" fill="url(#bar3)" filter="url(#glow)" opacity="0.9"/>
+  <rect x="880" y="208" width="70" height="4" rx="3" fill="#a5b4fc" opacity="0.9" filter="url(#glow)"/>
+
+  <!-- Value labels above bars -->
+  <g filter="url(#glow)" font-family="sans-serif" font-weight="800" text-anchor="middle">
+    <text x="315" y="345" font-size="16" fill="#ffd200">80%</text>
+    <text x="435" y="182" font-size="16" fill="#ffd200">97%</text>
+    <text x="555" y="292" font-size="14" fill="#c084fc">+27pp</text>
+    <text x="675" y="229" font-size="16" fill="#a78bfa">85%</text>
+    <text x="795" y="345" font-size="16" fill="#818cf8">60%</text>
+    <text x="915" y="197" font-size="16" fill="#a5b4fc">96%</text>
+  </g>
+
+  <!-- Trend line over bars -->
+  <polyline points="315,356 435,200 555,310 675,247 795,360 915,215"
+            fill="none" stroke="url(#gold)" stroke-width="2.5" stroke-dasharray="6 3"
+            filter="url(#glow)" opacity="0.7"/>
+
+  <!-- Trend dots -->
+  <g filter="url(#glow)">
+    <circle cx="315" cy="356" r="5" fill="#ffd200"/>
+    <circle cx="435" cy="200" r="5" fill="#ffd200"/>
+    <circle cx="555" cy="310" r="5" fill="#ffd200"/>
+    <circle cx="675" cy="247" r="5" fill="#ffd200"/>
+    <circle cx="795" cy="360" r="5" fill="#ffd200"/>
+    <circle cx="915" cy="215" r="5" fill="#ffd200"/>
+  </g>
+
+  <!-- Category labels -->
+  <g font-family="sans-serif" font-size="11" text-anchor="middle" fill="rgba(255,255,255,0.5)">
+    <text x="315" y="540">Varejo</text>
+    <text x="435" y="540">Indústria</text>
+    <text x="555" y="540">Saúde</text>
+    <text x="675" y="540">Logística</text>
+    <text x="795" y="540">Financeiro</text>
+    <text x="915" y="540">RH</text>
+  </g>
+
+  <!-- Title area -->
+  <g filter="url(#glow)" opacity="0.9">
+    <text x="600" y="90" text-anchor="middle" font-family="sans-serif" font-size="22" font-weight="800" fill="url(#gold)">
+      RESULTADOS REAIS
+    </text>
+    <text x="600" y="115" text-anchor="middle" font-family="sans-serif" font-size="13" fill="rgba(255,255,255,0.5)" letter-spacing="3">
+      CASES DE SUCESSO · CLICA AI
+    </text>
+  </g>
+
+  <!-- Decorative elements -->
+  <g opacity="0.12" fill="none" stroke="#c084fc" stroke-width="1">
+    <circle cx="100" cy="337" r="60"/>
+    <circle cx="100" cy="337" r="90"/>
+    <circle cx="1100" cy="337" r="60"/>
+    <circle cx="1100" cy="337" r="90"/>
+  </g>
+
+  <!-- Floating particles -->
+  <g filter="url(#glow)">
+    <circle cx="150" cy="200" r="2.5" fill="#ffd200" opacity="0.6"/>
+    <circle cx="1050" cy="250" r="2" fill="#f7971e" opacity="0.6"/>
+    <circle cx="120" cy="500" r="2" fill="#a78bfa" opacity="0.5"/>
+    <circle cx="1080" cy="480" r="2.5" fill="#c084fc" opacity="0.5"/>
+  </g>
+</svg>

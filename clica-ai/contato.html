@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato — Clica AI</title>
+  <meta name="description" content="Entre em contato com a Clica AI. Fale pelo WhatsApp, envie uma mensagem ou visite-nos. Respondemos em até 2 horas.">
+  <meta property="og:title" content="Contato — Clica AI">
+  <meta property="og:description" content="Fale com a Clica AI pelo WhatsApp ou pelo formulário. Respondemos em até 2 horas.">
+  <link rel="stylesheet" href="assets/css/global.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+</head>
+<body>
+
+  <div id="header-placeholder"></div>
+
+  <section class="page-hero">
+    <div class="page-hero-bg">
+      <img src="assets/images/hero-contato.svg" alt="Contato Clica AI">
+    </div>
+    <div class="page-hero-content">
+      <span class="section-label">Fale conosco</span>
+      <h1>Vamos <span class="text-gold">conversar?</span></h1>
+      <p>Estamos prontos para entender seu negócio e mostrar como a IA pode transformar seus resultados.</p>
+    </div>
+  </section>
+
+  <section style="padding: var(--section-padding);">
+    <div class="container">
+      <div class="grid-2 align-start">
+
+        <!-- FORMULÁRIO -->
+        <div>
+          <h2 style="margin-bottom:8px;">Envie uma <span class="text-gold">mensagem</span></h2>
+          <p style="margin-bottom:32px;">Preencha o formulário e redirecionaremos sua mensagem diretamente para o nosso WhatsApp.</p>
+
+          <form class="contact-form" id="contact-form">
+            <div class="form-group">
+              <label for="nome">Seu nome *</label>
+              <input type="text" id="nome" name="nome" placeholder="João Silva" required>
+            </div>
+            <div class="form-group">
+              <label for="empresa">Empresa</label>
+              <input type="text" id="empresa" name="empresa" placeholder="Nome da sua empresa">
+            </div>
+            <div class="form-group">
+              <label for="mensagem">Como podemos ajudar? *</label>
+              <textarea id="mensagem" name="mensagem" placeholder="Conte sobre seu negócio e o que você quer resolver com IA..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
+              💬 Enviar pelo WhatsApp
+            </button>
+          </form>
+        </div>
+
+        <!-- CANAIS + INFO -->
+        <div style="display:flex;flex-direction:column;gap:24px;">
+          <div class="glass" style="padding:28px;border-radius:var(--radius-md);">
+            <div style="display:flex;gap:16px;align-items:center;">
+              <div style="font-size:2rem;flex-shrink:0;">💬</div>
+              <div>
+                <h4>WhatsApp</h4>
+                <p style="font-size:0.9rem;margin-top:4px;">+55 35 3195-9999</p>
+                <a href="https://wa.me/553531959999" target="_blank" rel="noopener"
+                   class="btn btn-whatsapp" style="margin-top:12px;padding:10px 20px;font-size:0.875rem;">
+                  Abrir WhatsApp →
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass" style="padding:28px;border-radius:var(--radius-md);">
+            <div style="display:flex;gap:16px;align-items:center;">
+              <div style="font-size:2rem;flex-shrink:0;">✉️</div>
+              <div>
+                <h4>E-mail</h4>
+                <p style="font-size:0.9rem;margin-top:4px;">contato@clicaai.com.br</p>
+                <a href="mailto:contato@clicaai.com.br"
+                   class="btn btn-secondary" style="margin-top:12px;padding:10px 20px;font-size:0.875rem;">
+                  Enviar e-mail →
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass" style="padding:28px;border-radius:var(--radius-md);">
+            <div style="display:flex;gap:16px;align-items:flex-start;">
+              <div style="font-size:2rem;flex-shrink:0;">📍</div>
+              <div>
+                <h4>Localização</h4>
+                <p style="font-size:0.9rem;margin-top:4px;">Minas Gerais, Brasil</p>
+                <p style="font-size:0.875rem;margin-top:8px;">Atendemos presencialmente na região e remotamente em todo o Brasil.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass" style="padding:28px;border-radius:var(--radius-md);">
+            <div style="display:flex;gap:16px;align-items:center;">
+              <div style="font-size:2rem;flex-shrink:0;">⚡</div>
+              <div>
+                <h4>Tempo de resposta</h4>
+                <p style="font-size:0.9rem;margin-top:4px;">Respondemos em até <strong style="color:var(--gold-end);">2 horas</strong> em dias úteis.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

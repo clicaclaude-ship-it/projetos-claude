@@ -1,0 +1,149 @@
+<svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bg" cx="60%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="#0a0818"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f7971e"/>
+      <stop offset="100%" stop-color="#ffd200"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg)"/>
+
+  <!-- Circuit board traces -->
+  <g opacity="0.12" stroke="#818cf8" stroke-width="1.5" fill="none">
+    <polyline points="100,200 200,200 200,150 400,150 400,200 600,200 600,100 800,100"/>
+    <polyline points="100,400 250,400 250,450 500,450 500,400 700,400 700,500 900,500"/>
+    <polyline points="300,300 300,250 550,250 550,300 750,300 750,250 1000,250"/>
+    <polyline points="100,550 350,550 350,500 600,500 600,550 850,550 850,600 1100,600"/>
+    <polyline points="900,100 1000,100 1000,200 1100,200 1100,150"/>
+    <polyline points="200,600 200,650"/>
+    <polyline points="550,250 550,150 650,150"/>
+    <polyline points="750,300 750,400"/>
+    <polyline points="500,450 500,550"/>
+  </g>
+
+  <!-- Circuit nodes (connection points) -->
+  <g filter="url(#glow)" opacity="0.8">
+    <circle cx="200" cy="200" r="5" fill="#818cf8"/>
+    <circle cx="400" cy="150" r="5" fill="#818cf8"/>
+    <circle cx="600" cy="200" r="5" fill="#818cf8"/>
+    <circle cx="250" cy="400" r="5" fill="#818cf8"/>
+    <circle cx="500" cy="450" r="5" fill="#818cf8"/>
+    <circle cx="700" cy="400" r="5" fill="#818cf8"/>
+    <circle cx="300" cy="300" r="5" fill="#a78bfa"/>
+    <circle cx="550" cy="250" r="5" fill="#a78bfa"/>
+    <circle cx="750" cy="300" r="5" fill="#a78bfa"/>
+    <circle cx="1000" cy="250" r="5" fill="#a78bfa"/>
+    <circle cx="350" cy="550" r="5" fill="#818cf8"/>
+    <circle cx="600" cy="500" r="5" fill="#818cf8"/>
+    <circle cx="850" cy="550" r="5" fill="#818cf8"/>
+  </g>
+
+  <!-- Central gear system -->
+  <g transform="translate(850, 337)" filter="url(#glow)" opacity="0.9">
+    <!-- Outer gear -->
+    <g opacity="0.6" stroke="url(#gold)" stroke-width="2" fill="none">
+      <circle cx="0" cy="0" r="140"/>
+      <circle cx="0" cy="0" r="120"/>
+      <!-- Gear teeth -->
+      <g opacity="0.7">
+        <rect x="-8" y="-152" width="16" height="24" rx="3" fill="url(#gold)"/>
+        <rect x="-8" y="-152" width="16" height="24" rx="3" fill="url(#gold)" transform="rotate(30)"/>
+        <rect x="-8" y="-152" width="16" height="24" rx="3" fill="url(#gold)" transform="rotate(60)"/>
+        <rect x="-8" y="-152" width="16" height="24" rx="3" fill="url(#gold)" transform="rotate(90)"/>
+        <rect x="-8" y="-152" width="16" height="24" rx="3" fill="url(#gold)" transform="rotate(120)"/>
+        <rect x="-8" y="-152" width="16" height="24" rx="3" fill="url(#gold)" transform="rotate(150)"/>
+        <rect x="-8" y="-152" width="16" height="24" rx="3" fill="url(#gold)" transform="rotate(180)"/>
+        <rect x="-8" y="-152" width="16" height="24" rx="3" fill="url(#gold)" transform="rotate(210)"/>
+        <rect x="-8" y="-152" width="16" height="24" rx="3" fill="url(#gold)" transform="rotate(240)"/>
+        <rect x="-8" y="-152" width="16" height="24" rx="3" fill="url(#gold)" transform="rotate(270)"/>
+        <rect x="-8" y="-152" width="16" height="24" rx="3" fill="url(#gold)" transform="rotate(300)"/>
+        <rect x="-8" y="-152" width="16" height="24" rx="3" fill="url(#gold)" transform="rotate(330)"/>
+      </g>
+    </g>
+    <!-- Inner gear -->
+    <g opacity="0.8" stroke="#f7971e" stroke-width="1.5" fill="none">
+      <circle cx="0" cy="0" r="80"/>
+      <circle cx="0" cy="0" r="65"/>
+      <g opacity="0.7">
+        <rect x="-5" y="-88" width="10" height="16" rx="2" fill="#f7971e" transform="rotate(0)"/>
+        <rect x="-5" y="-88" width="10" height="16" rx="2" fill="#f7971e" transform="rotate(45)"/>
+        <rect x="-5" y="-88" width="10" height="16" rx="2" fill="#f7971e" transform="rotate(90)"/>
+        <rect x="-5" y="-88" width="10" height="16" rx="2" fill="#f7971e" transform="rotate(135)"/>
+        <rect x="-5" y="-88" width="10" height="16" rx="2" fill="#f7971e" transform="rotate(180)"/>
+        <rect x="-5" y="-88" width="10" height="16" rx="2" fill="#f7971e" transform="rotate(225)"/>
+        <rect x="-5" y="-88" width="10" height="16" rx="2" fill="#f7971e" transform="rotate(270)"/>
+        <rect x="-5" y="-88" width="10" height="16" rx="2" fill="#f7971e" transform="rotate(315)"/>
+      </g>
+    </g>
+    <!-- Core circle -->
+    <circle cx="0" cy="0" r="40" fill="#302b63" stroke="url(#gold)" stroke-width="2"/>
+    <circle cx="0" cy="0" r="20" fill="url(#gold)" opacity="0.9"/>
+    <!-- Lightning bolt in center -->
+    <path d="M-6,-18 L2,-2 L-4,-2 L6,18 L-2,2 L4,2 Z" fill="#1a1a2e" opacity="0.9"/>
+    <!-- Cross lines -->
+    <line x1="-65" y1="0" x2="65" y2="0" stroke="url(#gold)" stroke-width="1" opacity="0.4"/>
+    <line x1="0" y1="-65" x2="0" y2="65" stroke="url(#gold)" stroke-width="1" opacity="0.4"/>
+    <line x1="-46" y1="-46" x2="46" y2="46" stroke="url(#gold)" stroke-width="0.8" opacity="0.3"/>
+    <line x1="46" y1="-46" x2="-46" y2="46" stroke="url(#gold)" stroke-width="0.8" opacity="0.3"/>
+  </g>
+
+  <!-- Service icon nodes orbiting the gear -->
+  <g filter="url(#glow)">
+    <!-- AI node -->
+    <circle cx="850" cy="155" r="28" fill="#1e1b4b" stroke="url(#gold)" stroke-width="2" opacity="0.9"/>
+    <text x="850" y="161" text-anchor="middle" font-size="20" fill="#ffd200">🤖</text>
+    <!-- Automation node -->
+    <circle cx="1030" cy="250" r="28" fill="#1e1b4b" stroke="#f7971e" stroke-width="2" opacity="0.9"/>
+    <text x="1030" y="256" text-anchor="middle" font-size="20" fill="#f7971e">⚡</text>
+    <!-- Consulting node -->
+    <circle cx="1030" cy="424" r="28" fill="#1e1b4b" stroke="#a78bfa" stroke-width="2" opacity="0.9"/>
+    <text x="1030" y="430" text-anchor="middle" font-size="20" fill="#a78bfa">🎯</text>
+    <!-- Dev node -->
+    <circle cx="850" cy="519" r="28" fill="#1e1b4b" stroke="#818cf8" stroke-width="2" opacity="0.9"/>
+    <text x="850" y="525" text-anchor="middle" font-size="20" fill="#818cf8">💻</text>
+    <!-- Training node -->
+    <circle cx="670" cy="424" r="28" fill="#1e1b4b" stroke="#c084fc" stroke-width="2" opacity="0.9"/>
+    <text x="670" y="430" text-anchor="middle" font-size="20" fill="#c084fc">🎓</text>
+    <!-- Circle connector -->
+    <circle cx="670" cy="250" r="28" fill="#1e1b4b" stroke="#ffd200" stroke-width="2" opacity="0.9"/>
+    <text x="670" y="256" text-anchor="middle" font-size="20" fill="#ffd200">📊</text>
+  </g>
+
+  <!-- Connecting lines from gear to nodes -->
+  <g opacity="0.4" stroke="url(#gold)" stroke-width="1" fill="none">
+    <line x1="850" y1="197" x2="850" y2="183"/>
+    <line x1="987" y1="249" x2="1002" y2="250"/>
+    <line x1="987" y1="425" x2="1002" y2="424"/>
+    <line x1="850" y1="477" x2="850" y2="491"/>
+    <line x1="713" y1="425" x2="698" y2="424"/>
+    <line x1="713" y1="249" x2="698" y2="250"/>
+  </g>
+
+  <!-- Left side decorative elements -->
+  <g opacity="0.15" stroke="#c084fc" stroke-width="1" fill="none">
+    <rect x="80" y="100" width="300" height="180" rx="8"/>
+    <rect x="100" y="120" width="80" height="12" rx="3" fill="#c084fc" opacity="0.4"/>
+    <rect x="100" y="142" width="140" height="8" rx="2" fill="#818cf8" opacity="0.3"/>
+    <rect x="100" y="158" width="110" height="8" rx="2" fill="#818cf8" opacity="0.3"/>
+    <rect x="100" y="180" width="250" height="60" rx="4" fill="#302b63" opacity="0.5"/>
+  </g>
+
+  <!-- Particles -->
+  <g filter="url(#glow)" opacity="0.8">
+    <circle cx="150" cy="350" r="3" fill="#ffd200"/>
+    <circle cx="230" cy="500" r="2" fill="#f7971e"/>
+    <circle cx="450" cy="80" r="2.5" fill="#a78bfa"/>
+    <circle cx="1100" cy="100" r="3" fill="#ffd200"/>
+    <circle cx="1150" cy="400" r="2" fill="#f7971e"/>
+    <circle cx="100" cy="620" r="2.5" fill="#c084fc"/>
+    <circle cx="500" cy="600" r="2" fill="#ffd200"/>
+  </g>
+</svg>
