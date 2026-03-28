@@ -1,0 +1,101 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - img "Blog Clica AI" [ref=e4]
+    - generic [ref=e5]:
+      - generic [ref=e6]: Conhecimento
+      - heading "Blog Clica AI" [level=1] [ref=e7]
+      - paragraph [ref=e8]: Tutoriais práticos, tendências do mundo de IA e cases reais para você ficar sempre à frente.
+  - generic [ref=e10]:
+    - generic [ref=e11]:
+      - button "Todos" [ref=e12] [cursor=pointer]
+      - button "Tutoriais" [ref=e13] [cursor=pointer]
+      - button "Tendências" [ref=e14] [cursor=pointer]
+      - button "Cases" [ref=e15] [cursor=pointer]
+    - generic [ref=e16]:
+      - article [ref=e17]:
+        - link "Como automatizar o atendimento do WhatsApp com Agentes de IA" [ref=e18] [cursor=pointer]:
+          - /url: post.html?slug=como-automatizar-atendimento-whatsapp-ia
+          - img "Como automatizar o atendimento do WhatsApp com Agentes de IA" [ref=e19]
+        - generic [ref=e20]:
+          - generic [ref=e21]: Tutoriais
+          - heading "Como automatizar o atendimento do WhatsApp com Agentes de IA" [level=3] [ref=e22]:
+            - link "Como automatizar o atendimento do WhatsApp com Agentes de IA" [ref=e23] [cursor=pointer]:
+              - /url: post.html?slug=como-automatizar-atendimento-whatsapp-ia
+          - paragraph [ref=e24]: Descubra como criar um agente de IA que responde clientes automaticamente no WhatsApp — 24h por dia, sem intervenção humana.
+          - generic [ref=e26]: 📅 25 mar. 2026
+          - link "Ler artigo →" [ref=e27] [cursor=pointer]:
+            - /url: post.html?slug=como-automatizar-atendimento-whatsapp-ia
+      - article [ref=e28]:
+        - link "As 5 tendências de IA que vão dominar os negócios em 2026" [ref=e29] [cursor=pointer]:
+          - /url: post.html?slug=tendencias-ia-2026
+          - img "As 5 tendências de IA que vão dominar os negócios em 2026" [ref=e30]
+        - generic [ref=e31]:
+          - generic [ref=e32]: Tendências
+          - heading "As 5 tendências de IA que vão dominar os negócios em 2026" [level=3] [ref=e33]:
+            - link "As 5 tendências de IA que vão dominar os negócios em 2026" [ref=e34] [cursor=pointer]:
+              - /url: post.html?slug=tendencias-ia-2026
+          - paragraph [ref=e35]: "Agentes autônomos, IA multimodal, automação cognitiva e mais: as tendências que estão moldando o futuro dos negócios."
+          - generic [ref=e37]: 📅 20 mar. 2026
+          - link "Ler artigo →" [ref=e38] [cursor=pointer]:
+            - /url: post.html?slug=tendencias-ia-2026
+      - article [ref=e39]:
+        - 'link "Case: Como uma clínica médica aumentou 27% a ocupação da agenda com IA" [ref=e40] [cursor=pointer]':
+          - /url: post.html?slug=case-clinica-medica-agendamento-ia
+          - 'img "Case: Como uma clínica médica aumentou 27% a ocupação da agenda com IA" [ref=e41]'
+        - generic [ref=e42]:
+          - generic [ref=e43]: Cases
+          - 'heading "Case: Como uma clínica médica aumentou 27% a ocupação da agenda com IA" [level=3] [ref=e44]':
+            - 'link "Case: Como uma clínica médica aumentou 27% a ocupação da agenda com IA" [ref=e45] [cursor=pointer]':
+              - /url: post.html?slug=case-clinica-medica-agendamento-ia
+          - paragraph [ref=e46]: A história de como implementamos um agente de IA de agendamento que transformou a operação de uma clínica médica com 8 especialidades.
+          - generic [ref=e48]: 📅 15 mar. 2026
+          - link "Ler artigo →" [ref=e49] [cursor=pointer]:
+            - /url: post.html?slug=case-clinica-medica-agendamento-ia
+      - article [ref=e50]:
+        - 'link "RPA vs IA: qual a diferença e quando usar cada um?" [ref=e51] [cursor=pointer]':
+          - /url: post.html?slug=rpa-vs-ia-qual-a-diferenca
+          - 'img "RPA vs IA: qual a diferença e quando usar cada um?" [ref=e52]'
+        - generic [ref=e53]:
+          - generic [ref=e54]: Tutoriais
+          - 'heading "RPA vs IA: qual a diferença e quando usar cada um?" [level=3] [ref=e55]':
+            - 'link "RPA vs IA: qual a diferença e quando usar cada um?" [ref=e56] [cursor=pointer]':
+              - /url: post.html?slug=rpa-vs-ia-qual-a-diferenca
+          - paragraph [ref=e57]: Entenda as diferenças entre RPA (automação robótica de processos) e IA, e como combiná-los para obter o máximo resultado no seu negócio.
+          - generic [ref=e59]: 📅 10 mar. 2026
+          - link "Ler artigo →" [ref=e60] [cursor=pointer]:
+            - /url: post.html?slug=rpa-vs-ia-qual-a-diferenca
+      - article [ref=e61]:
+        - 'link "IA Generativa para empresas: além do ChatGPT" [ref=e62] [cursor=pointer]':
+          - /url: post.html?slug=ia-generativa-para-empresas
+          - 'img "IA Generativa para empresas: além do ChatGPT" [ref=e63]'
+        - generic [ref=e64]:
+          - generic [ref=e65]: Tendências
+          - 'heading "IA Generativa para empresas: além do ChatGPT" [level=3] [ref=e66]':
+            - 'link "IA Generativa para empresas: além do ChatGPT" [ref=e67] [cursor=pointer]':
+              - /url: post.html?slug=ia-generativa-para-empresas
+          - paragraph [ref=e68]: "Como as empresas estão usando IA generativa além dos chatbots: geração de relatórios, análise de documentos, criação de conteúdo e muito mais."
+          - generic [ref=e70]: 📅 5 mar. 2026
+          - link "Ler artigo →" [ref=e71] [cursor=pointer]:
+            - /url: post.html?slug=ia-generativa-para-empresas
+      - article [ref=e72]:
+        - 'link "Case: Rede varejista resolve 80% dos chamados de suporte automaticamente" [ref=e73] [cursor=pointer]':
+          - /url: post.html?slug=case-varejo-reducao-80-chamados-suporte
+          - 'img "Case: Rede varejista resolve 80% dos chamados de suporte automaticamente" [ref=e74]'
+        - generic [ref=e75]:
+          - generic [ref=e76]: Cases
+          - 'heading "Case: Rede varejista resolve 80% dos chamados de suporte automaticamente" [level=3] [ref=e77]':
+            - 'link "Case: Rede varejista resolve 80% dos chamados de suporte automaticamente" [ref=e78] [cursor=pointer]':
+              - /url: post.html?slug=case-varejo-reducao-80-chamados-suporte
+          - paragraph [ref=e79]: Veja como uma rede varejista com 12 lojas eliminou a fila de suporte com um agente de IA que responde em menos de 4 segundos.
+          - generic [ref=e81]: 📅 28 fev. 2026
+          - link "Ler artigo →" [ref=e82] [cursor=pointer]:
+            - /url: post.html?slug=case-varejo-reducao-80-chamados-suporte
+  - generic [ref=e84]:
+    - heading "Quer aplicar IA no seu negócio?" [level=2] [ref=e85]
+    - paragraph [ref=e86]: Fale com nossos especialistas e descubra por onde começar.
+    - link "💬 Falar com especialista" [ref=e88] [cursor=pointer]:
+      - /url: https://wa.me/553531959999
+```

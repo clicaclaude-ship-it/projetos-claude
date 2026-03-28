@@ -13,7 +13,6 @@ async function loadPartial(selector, url) {
     const res = await fetch(url);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     el.innerHTML = await res.text();
-    afterHeaderLoad();
   } catch (e) {
     console.warn(`Partial não carregado: ${url}`, e);
   }
@@ -21,7 +20,10 @@ async function loadPartial(selector, url) {
 
 async function loadPartials() {
   // Calcula path relativo para a raiz dependendo do nível da página
-  const depth = location.pathname.split('/').filter(Boolean).length - 1;
+  // Conta apenas segmentos de diretório (sem extensão), para funcionar tanto
+  // com /blog/ quanto com /blog/post.html
+  const parts = location.pathname.split('/').filter(Boolean);
+  const depth = parts.filter(p => !p.includes('.')).length;
   const root = depth > 0 ? '../'.repeat(depth) : './';
 
   await Promise.all([
@@ -29,6 +31,8 @@ async function loadPartials() {
     loadPartial('#footer-placeholder', `${root}assets/partials/footer.html`),
   ]);
 
+  // afterHeaderLoad chamado UMA VEZ após ambos os partials carregarem
+  afterHeaderLoad();
   markActiveNavLink();
 }
 

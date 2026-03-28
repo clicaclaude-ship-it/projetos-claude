@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jornada Profissional em IA — Eder Xavier</title>
+<style>
+  :root {
+    --gold: #d4af37;
+    --gold-light: #f0d060;
+    --purple: #7c3aed;
+    --purple-light: #a855f7;
+    --dark: #0a0a0a;
+    --dark2: #111111;
+    --dark3: #1a1a1a;
+    --dark4: #222222;
+    --text: #e8e8e8;
+    --muted: #888;
+    --green: #22c55e;
+    --red: #ef4444;
+    --blue: #3b82f6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  /* ── SLIDE ENGINE ── */
+  .deck {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 48px 64px;
+    opacity: 0;
+    transform: translateX(60px);
+    transition: opacity .45s ease, transform .45s ease;
+    pointer-events: none;
+    text-align: center;
+  }
+
+  .slide.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+  }
+
+  .slide.prev {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+
+  /* ── NAV ── */
+  .nav {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    z-index: 100;
+    background: rgba(255,255,255,.06);
+    backdrop-filter: blur(12px);
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 1px solid rgba(255,255,255,.1);
+  }
+
+  .nav button {
+    background: none;
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+    font-size: 18px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: background .2s;
+  }
+
+  .nav button:hover { background: rgba(255,255,255,.1); }
+  .nav button:disabled { opacity: .3; cursor: default; }
+
+  #counter {
+    font-size: 13px;
+    color: var(--muted);
+    min-width: 60px;
+    text-align: center;
+  }
+
+  .dots {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--muted);
+    cursor: pointer;
+    transition: all .2s;
+  }
+
+  .dot.active {
+    background: var(--gold);
+    width: 20px;
+    border-radius: 3px;
+  }
+
+  /* ── PROGRESS BAR ── */
+  #progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--purple), var(--gold));
+    transition: width .4s ease;
+    z-index: 200;
+  }
+
+  /* ── SLIDE NUMBER ── */
+  .slide-label {
+    position: fixed;
+    top: 20px;
+    right: 28px;
+    font-size: 12px;
+    color: var(--muted);
+    z-index: 100;
+    letter-spacing: .5px;
+  }
+
+  /* ── TYPOGRAPHY ── */
+  .tag {
+    display: inline-block;
+    background: rgba(212,175,55,.15);
+    border: 1px solid rgba(212,175,55,.3);
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+  }
+
+  .tag.purple {
+    background: rgba(124,58,237,.15);
+    border-color: rgba(124,58,237,.3);
+    color: var(--purple-light);
+  }
+
+  .tag.green {
+    background: rgba(34,197,94,.12);
+    border-color: rgba(34,197,94,.3);
+    color: var(--green);
+  }
+
+  h1 {
+    font-size: clamp(36px, 5vw, 68px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-size: clamp(28px, 3.5vw, 48px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  h3 {
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, var(--gold), var(--purple-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .subtitle {
+    font-size: clamp(15px, 1.8vw, 20px);
+    color: var(--muted);
+    max-width: 640px;
+    line-height: 1.6;
+  }
+
+  /* ── CARDS ── */
+  .grid {
+    display: grid;
+    gap: 16px;
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 24px;
+  }
+
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+  .card {
+    background: var(--dark3);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    transition: border-color .2s;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+
+  .card.purple::before {
+    background: linear-gradient(90deg, var(--purple), transparent);
+  }
+
+  .card.green::before {
+    background: linear-gradient(90deg, var(--green), transparent);
+  }
+
+  .card:hover { border-color: rgba(212,175,55,.2); }
+
+  .card-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .card p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .price-badge {
+    display: inline-block;
+    background: rgba(212,175,55,.12);
+    border: 1px solid rgba(212,175,55,.25);
+    color: var(--gold);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-top: 10px;
+  }
+
+  .price-badge.free {
+    background: rgba(34,197,94,.1);
+    border-color: rgba(34,197,94,.25);
+    color: var(--green);
+  }
+
+  .time-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(124,58,237,.1);
+    border: 1px solid rgba(124,58,237,.2);
+    color: var(--purple-light);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+    margin-top: 8px;
+    margin-left: 6px;
+  }
+
+  /* ── COURSE SLIDE ── */
+  .course-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 900px;
+  }
+
+  .course-logo {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    flex-shrink: 0;
+  }
+
+  .course-title { text-align: left; }
+  .course-title h2 { font-size: 28px; margin-bottom: 4px; }
+  .course-title p { color: var(--muted); font-size: 14px; }
+
+  .course-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    width: 100%;
+    max-width: 900px;
+  }
+
+  .info-block {
+    background: var(--dark3);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: left;
+  }
+
+  .info-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .info-value {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .info-value.price {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  ul.check-list {
+    list-style: none;
+    text-align: left;
+  }
+
+  ul.check-list li {
+    padding: 5px 0;
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  ul.check-list li::before {
+    content: '✓';
+    color: var(--green);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--gold), #b8960f);
+    color: #000;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 12px 24px;
+    border-radius: 10px;
+    text-decoration: none;
+    margin-top: 16px;
+    transition: opacity .2s, transform .2s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .cta-btn:hover { opacity: .9; transform: translateY(-1px); }
+
+  .cta-btn.purple-btn {
+    background: linear-gradient(135deg, var(--purple), #5b21b6);
+    color: #fff;
+  }
+
+  /* ── AI TOOLS TABLE ── */
+  .tools-table {
+    width: 100%;
+    max-width: 1000px;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+
+  .tools-table th {
+    background: var(--dark3);
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,.07);
+  }
+
+  .tools-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255,255,255,.05);
+    color: var(--text);
+    vertical-align: middle;
+  }
+
+  .tools-table tr:last-child td { border-bottom: none; }
+
+  .tools-table tr:hover td { background: rgba(255,255,255,.02); }
+
+  .pill {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .pill.yes { background: rgba(34,197,94,.15); color: var(--green); }
+  .pill.partial { background: rgba(212,175,55,.12); color: var(--gold); }
+  .pill.no { background: rgba(239,68,68,.12); color: var(--red); }
+
+  .tool-name {
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* ── TIMELINE ── */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+    max-width: 800px;
+    margin-top: 16px;
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 28px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--purple), var(--gold));
+  }
+
+  .tl-item {
+    display: flex;
+    gap: 24px;
+    padding: 16px 0;
+    align-items: flex-start;
+  }
+
+  .tl-dot {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 14px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+    border: 2px solid;
+  }
+
+  .tl-dot.m1 { background: rgba(124,58,237,.15); border-color: var(--purple); color: var(--purple-light); }
+  .tl-dot.m2 { background: rgba(212,175,55,.12); border-color: var(--gold); color: var(--gold); }
+  .tl-dot.m3 { background: rgba(34,197,94,.1); border-color: var(--green); color: var(--green); }
+  .tl-dot.m4 { background: rgba(59,130,246,.1); border-color: var(--blue); color: var(--blue); }
+
+  .tl-content { text-align: left; }
+  .tl-content h3 { font-size: 16px; color: var(--text); margin-bottom: 4px; }
+  .tl-content p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+  /* ── SLIDE BG VARIANTS ── */
+  .slide.cover {
+    background: radial-gradient(ellipse at 30% 50%, rgba(124,58,237,.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 60%, rgba(212,175,55,.08) 0%, transparent 55%),
+                var(--dark);
+  }
+
+  .slide.dark2-bg { background: var(--dark2); }
+
+  /* ── COVER DECORATIONS ── */
+  .cover-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid;
+    pointer-events: none;
+  }
+
+  .ring1 {
+    width: 500px; height: 500px;
+    border-color: rgba(124,58,237,.08);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .ring2 {
+    width: 750px; height: 750px;
+    border-color: rgba(212,175,55,.05);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* ── STAT ROW ── */
+  .stat-row {
+    display: flex;
+    gap: 24px;
+    margin-top: 28px;
+  }
+
+  .stat {
+    background: var(--dark3);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 12px;
+    padding: 20px 28px;
+    text-align: center;
+  }
+
+  .stat .num {
+    font-size: 36px;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--gold), var(--purple-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .stat .lbl {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* ── FREE VS PAID TABLE ── */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 0;
+    width: 100%;
+    max-width: 900px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.07);
+    margin-top: 20px;
+    font-size: 13px;
+  }
+
+  .cg-header {
+    background: var(--dark3);
+    padding: 14px 18px;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255,255,255,.07);
+  }
+
+  .cg-header.gold { color: var(--gold); }
+  .cg-header.purple { color: var(--purple-light); }
+
+  .cg-cell {
+    padding: 12px 18px;
+    border-bottom: 1px solid rgba(255,255,255,.04);
+    color: var(--text);
+    vertical-align: middle;
+  }
+
+  .cg-cell:nth-child(3n+2) { background: rgba(34,197,94,.03); }
+  .cg-cell:nth-child(3n+3) { background: rgba(212,175,55,.03); }
+
+  .cg-row-label {
+    font-weight: 600;
+    color: var(--muted);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+  }
+
+  /* ── FINAL SLIDE ── */
+  .final-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    width: 100%;
+    max-width: 900px;
+    margin-top: 24px;
+  }
+
+  .action-card {
+    background: var(--dark3);
+    border: 1px solid rgba(255,255,255,.07);
+    border-radius: 12px;
+    padding: 20px 16px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .action-card .step-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--purple), var(--gold));
+    color: #fff;
+    font-weight: 800;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+  }
+
+  .action-card strong { display: block; color: var(--text); font-size: 14px; margin-bottom: 6px; }
+
+  /* ── KEYBOARD HINT ── */
+  .kbd-hint {
+    position: fixed;
+    top: 20px;
+    left: 28px;
+    font-size: 11px;
+    color: rgba(255,255,255,.2);
+    z-index: 100;
+    letter-spacing: .3px;
+  }
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+<div class="slide-label" id="slide-label">1 / 13</div>
+<div class="kbd-hint">← → para navegar</div>
+
+<div class="deck" id="deck">
+
+  <!-- ══════════ SLIDE 1: COVER ══════════ -->
+  <div class="slide cover active" data-index="0">
+    <div class="cover-ring ring1"></div>
+    <div class="cover-ring ring2"></div>
+    <div class="tag">Sua jornada começa aqui</div>
+    <h1>Profissional em <span class="gradient-text">Inteligência<br>Artificial</span></h1>
+    <p class="subtitle" style="margin-top:12px">Um roteiro completo de cursos, ferramentas e estratégias para você, Eder Xavier, se tornar referência no mercado de IA em 2026.</p>
+    <div class="stat-row">
+      <div class="stat"><div class="num">3</div><div class="lbl">Cursos Selecionados</div></div>
+      <div class="stat"><div class="num">7</div><div class="lbl">Ferramentas Essenciais</div></div>
+      <div class="stat"><div class="num">12</div><div class="lbl">Meses de Jornada</div></div>
+    </div>
+    <div style="margin-top:32px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center;">
+      <a href="https://linkedin.com/in/eder-xavier" target="_blank" style="text-decoration:none;">
+        <div style="background:rgba(10,102,194,.15);border:1px solid rgba(10,102,194,.3);color:#60a5fa;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px;">
+          🔗 linkedin.com/in/eder-xavier
+        </div>
+      </a>
+      <a href="https://instagram.com/eder.clicarede" target="_blank" style="text-decoration:none;">
+        <div style="background:rgba(168,85,247,.1);border:1px solid rgba(168,85,247,.25);color:#c084fc;padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px;">
+          📸 @eder.clicarede
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ══════════ SLIDE 2: POR QUE IA AGORA ══════════ -->
+  <div class="slide dark2-bg" data-index="1">
+    <div class="tag purple">O Mercado em 2026</div>
+    <h2>Por que <span class="gradient-text">dominar IA</span> é urgente?</h2>
+    <p class="subtitle" style="margin-bottom:24px">O mercado não espera. Profissionais que dominam IA ganham em média 40% a mais e têm 3x mais oportunidades.</p>
+    <div class="grid grid-3" style="max-width:900px">
+      <div class="card">
+        <span class="card-icon">💼</span>
+        <h3>Mercado de Trabalho</h3>
+        <p>97 milhões de novos empregos em IA criados até 2025 (WEF). Profissionais de IA têm taxa de desemprego próxima de <strong style="color:var(--green)">zero</strong>.</p>
+      </div>
+      <div class="card purple">
+        <span class="card-icon">💰</span>
+        <h3>Salários em Alta</h3>
+        <p>Engenheiro de IA no Brasil: R$12.000–R$35.000/mês. Consultores IA para PMEs: R$5.000–R$15.000 por projeto.</p>
+      </div>
+      <div class="card green">
+        <span class="card-icon">🚀</span>
+        <h3>Automação de Negócios</h3>
+        <p>Agências de automação IA faturando R$50k+/mês com 2–3 clientes. Nicho perfeito para o perfil da Clica AI.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ SLIDE 3: TOP 3 CURSOS OVERVIEW ══════════ -->
+  <div class="slide" data-index="2">
+    <div class="tag">Educação</div>
+    <h2>Os <span class="gradient-text">3 Melhores Cursos</span> para Profissionalização</h2>
+    <p class="subtitle" style="margin-bottom:24px">Selecionados por qualidade do conteúdo, reconhecimento de mercado e custo-benefício.</p>
+    <div class="grid grid-3" style="max-width:1000px">
+      <div class="card">
+        <span class="card-icon">🏫</span>
+        <h3>#1 DeepLearning.AI</h3>
+        <p>O melhor do mundo. Criado por Andrew Ng (ex-Google Brain). Mais de 7 milhões de alunos globais.</p>
+        <div><span class="price-badge">~R$275/mês</span><span class="time-badge">⏱ 3–6 meses</span></div>
+      </div>
+      <div class="card purple">
+        <span class="card-icon">🇧🇷</span>
+        <h3>#2 Alura IA</h3>
+        <p>Melhor plataforma <strong>brasileira</strong>. 100% em português, com trilhas práticas e projetos reais.</p>
+        <div><span class="price-badge">~R$97/mês</span><span class="time-badge">⏱ 6–9 meses</span></div>
+      </div>
+      <div class="card green">
+        <span class="card-icon">☁️</span>
+        <h3>#3 AWS Skill Builder</h3>
+        <p>Certificações AWS em Machine Learning e IA generativa. Alta valorização no mercado corporativo.</p>
+        <div><span class="price-badge free">Grátis + Certificação</span><span class="time-badge">⏱ 2–4 meses</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ SLIDE 4: CURSO 1 – DeepLearning.AI ══════════ -->
+  <div class="slide dark2-bg" data-index="3">
+    <div class="course-header">
+      <div class="course-logo" style="background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.2);">🏫</div>
+      <div class="course-title">
+        <h2>DeepLearning.AI <span style="color:var(--gold)">+ Coursera</span></h2>
+        <p>Criado por Andrew Ng · Stanford University · 7M+ alunos · Nível mundial</p>
+      </div>
+    </div>
+    <div class="course-body">
+      <div class="info-block">
+        <div class="info-label">Preço</div>
+        <div class="info-value price">~R$275/mês</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:4px">Coursera Plus ≈ USD 59/mês · pago em BRL via cartão</div>
+        <a href="https://www.coursera.org/professional-certificates/ai-engineer" target="_blank" class="cta-btn" style="margin-top:14px;font-size:13px;">
+          🛒 Comprar no Coursera
+        </a>
+      </div>
+      <div class="info-block">
+        <div class="info-label">Tempo de Aprendizado</div>
+        <div class="info-value" style="font-size:20px;font-weight:700;color:var(--purple-light)">3 a 6 meses</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:4px">dedicando 8–10h por semana</div>
+      </div>
+      <div class="info-block" style="grid-column: span 2;">
+        <div class="info-label">O que você aprende</div>
+        <ul class="check-list" style="display:grid;grid-template-columns:1fr 1fr;gap:0 24px;margin-top:8px">
+          <li>Machine Learning com Python (NumPy, Pandas)</li>
+          <li>Deep Learning e Redes Neurais (TensorFlow)</li>
+          <li>Prompt Engineering para LLMs</li>
+          <li>Agentes de IA com LangChain e LangGraph</li>
+          <li>RAG (Retrieval-Augmented Generation)</li>
+          <li>Fine-tuning de modelos de linguagem</li>
+          <li>IA Generativa — GPT, Claude, Gemini</li>
+          <li>MLOps e deploy de modelos em produção</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ SLIDE 5: CURSO 2 – ALURA ══════════ -->
+  <div class="slide" data-index="4">
+    <div class="course-header">
+      <div class="course-logo" style="background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.25);">🇧🇷</div>
+      <div class="course-title">
+        <h2>Alura <span style="color:var(--purple-light)">Formação IA</span></h2>
+        <p>Maior plataforma de tecnologia do Brasil · 100% pt-BR · Projetos práticos</p>
+      </div>
+    </div>
+    <div class="course-body">
+      <div class="info-block">
+        <div class="info-label">Preço</div>
+        <div class="info-value price" style="color:var(--purple-light)">R$97/mês</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:4px">Plano anual R$1.170/ano · Plano mensal R$122/mês</div>
+        <a href="https://www.alura.com.br/cursos-online-inteligencia-artificial" target="_blank" class="cta-btn purple-btn" style="margin-top:14px;font-size:13px;">
+          🛒 Assinar Alura
+        </a>
+      </div>
+      <div class="info-block">
+        <div class="info-label">Tempo de Aprendizado</div>
+        <div class="info-value" style="font-size:20px;font-weight:700;color:var(--purple-light)">6 a 9 meses</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:4px">dedicando 6–8h por semana</div>
+      </div>
+      <div class="info-block" style="grid-column: span 2;">
+        <div class="info-label">Trilhas disponíveis na Alura</div>
+        <ul class="check-list" style="display:grid;grid-template-columns:1fr 1fr;gap:0 24px;margin-top:8px">
+          <li>IA para Negócios — Automação e processos</li>
+          <li>IA para Programação — GitHub Copilot, Python</li>
+          <li>IA para Marketing Digital — Copy, campanhas</li>
+          <li>IA para Dados — TensorFlow, Hugging Face</li>
+          <li>Prompt Engineering avançado</li>
+          <li>ChatGPT, Claude e Gemini na prática</li>
+          <li>Criação de Agentes de IA</li>
+          <li>Fundamentos de Machine Learning</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ SLIDE 6: CURSO 3 – AWS ══════════ -->
+  <div class="slide dark2-bg" data-index="5">
+    <div class="course-header">
+      <div class="course-logo" style="background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);">☁️</div>
+      <div class="course-title">
+        <h2>AWS Skill Builder <span style="color:var(--green)">+ ML Cert.</span></h2>
+        <p>Amazon Web Services · Certificação reconhecida globalmente · Trilha IA Generativa gratuita</p>
+      </div>
+    </div>
+    <div class="course-body">
+      <div class="info-block">
+        <div class="info-label">Preço</div>
+        <div class="info-value price" style="color:var(--green)">Grátis*</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:4px">*Trilha IA Generativa 100% gratuita · Certificação AWS ML Specialty: ~USD 300 (exame)</div>
+        <a href="https://aws.amazon.com/training/learn-about/machine-learning/" target="_blank" class="cta-btn" style="margin-top:14px;font-size:13px;background:linear-gradient(135deg,var(--green),#15803d);color:#fff;">
+          🛒 Acessar AWS Skill Builder
+        </a>
+      </div>
+      <div class="info-block">
+        <div class="info-label">Tempo de Aprendizado</div>
+        <div class="info-value" style="font-size:20px;font-weight:700;color:var(--green)">2 a 4 meses</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:4px">dedicando 5–8h por semana · Ideal como 2º passo</div>
+      </div>
+      <div class="info-block" style="grid-column: span 2;">
+        <div class="info-label">Por que AWS?</div>
+        <ul class="check-list" style="display:grid;grid-template-columns:1fr 1fr;gap:0 24px;margin-top:8px">
+          <li>Trilha "Generative AI Learning Plan" — 100% gratuita</li>
+          <li>Certificação AWS ML Specialty — top do mercado</li>
+          <li>Amazon Bedrock — LLMs em cloud corporativo</li>
+          <li>SageMaker — deploy e treino de modelos</li>
+          <li>Parceiros corporativos exigem AWS cert.</li>
+          <li>Conteúdo atualizado com o lançamento de novos modelos</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ SLIDE 7: IAS ESSENCIAIS ══════════ -->
+  <div class="slide" data-index="6">
+    <div class="tag purple">Ferramentas</div>
+    <h2>As 7 IAs <span class="gradient-text">Essenciais</span> para Profissionais</h2>
+    <table class="tools-table">
+      <thead>
+        <tr>
+          <th>Ferramenta</th>
+          <th>Tipo</th>
+          <th>Gratuito</th>
+          <th>Pago</th>
+          <th>Trabalha Profissionalmente Grátis?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="tool-name">🤖 ChatGPT</div></td>
+          <td style="color:var(--muted)">Texto / Código</td>
+          <td>GPT-4o mini (limitado)</td>
+          <td><span class="price-badge" style="font-size:11px">USD $20/mês</span></td>
+          <td><span class="pill partial">Parcialmente</span></td>
+        </tr>
+        <tr>
+          <td><div class="tool-name">✨ Claude</div></td>
+          <td style="color:var(--muted)">Texto / Código / Análise</td>
+          <td>Claude 3.5 Haiku (limite diário)</td>
+          <td><span class="price-badge" style="font-size:11px">USD $20/mês</span></td>
+          <td><span class="pill partial">Parcialmente</span></td>
+        </tr>
+        <tr>
+          <td><div class="tool-name">🔷 Gemini</div></td>
+          <td style="color:var(--muted)">Texto / Imagem / Código</td>
+          <td>Gemini 1.5 Flash (generoso)</td>
+          <td><span class="price-badge" style="font-size:11px">USD $19,99/mês</span></td>
+          <td><span class="pill yes">Sim, em boa parte</span></td>
+        </tr>
+        <tr>
+          <td><div class="tool-name">👨‍💻 GitHub Copilot</div></td>
+          <td style="color:var(--muted)">Código / Dev</td>
+          <td>2.000 completions + 50 chats/mês</td>
+          <td><span class="price-badge" style="font-size:11px">USD $10/mês</span></td>
+          <td><span class="pill yes">Sim</span></td>
+        </tr>
+        <tr>
+          <td><div class="tool-name">🎨 Midjourney</div></td>
+          <td style="color:var(--muted)">Imagem / Design</td>
+          <td>❌ Sem plano gratuito</td>
+          <td><span class="price-badge" style="font-size:11px">USD $10/mês</span></td>
+          <td><span class="pill no">Não (sem free tier)</span></td>
+        </tr>
+        <tr>
+          <td><div class="tool-name">🔍 Perplexity AI</div></td>
+          <td style="color:var(--muted)">Pesquisa / Análise</td>
+          <td>5 buscas Pro/dia</td>
+          <td><span class="price-badge" style="font-size:11px">USD $20/mês</span></td>
+          <td><span class="pill partial">Uso básico sim</span></td>
+        </tr>
+        <tr>
+          <td><div class="tool-name">⚙️ n8n / Make</div></td>
+          <td style="color:var(--muted)">Automação / Fluxos</td>
+          <td>n8n open-source (self-host)</td>
+          <td><span class="price-badge" style="font-size:11px">R$50–R$200/mês</span></td>
+          <td><span class="pill yes">Sim (self-host)</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ══════════ SLIDE 8: GRATUITO vs PROFISSIONAL ══════════ -->
+  <div class="slide dark2-bg" data-index="7">
+    <div class="tag green">Free vs. Pago</div>
+    <h2>Dá pra trabalhar <span class="gradient-text">profissionalmente de graça?</span></h2>
+    <p class="subtitle" style="margin-bottom:4px">A resposta honesta: depende do volume e da qualidade exigida. Veja o comparativo:</p>
+    <div class="compare-grid">
+      <div class="cg-header">Recurso</div>
+      <div class="cg-header green">🆓 Plano Gratuito</div>
+      <div class="cg-header gold">💎 Plano Pago</div>
+
+      <div class="cg-cell cg-row-label">ChatGPT – Volume</div>
+      <div class="cg-cell">~10–20 msgs/3h com GPT-4o</div>
+      <div class="cg-cell">Ilimitado (sujeito a limites altos)</div>
+
+      <div class="cg-cell cg-row-label">Claude – Contexto</div>
+      <div class="cg-cell">Limite diário, janela menor</div>
+      <div class="cg-cell">200k tokens, prioridade nos picos</div>
+
+      <div class="cg-cell cg-row-label">Gemini – Modelos</div>
+      <div class="cg-cell">Flash (rápido, menos potente)</div>
+      <div class="cg-cell">Pro 1.5 / 2.0 Ultra, Deep Research</div>
+
+      <div class="cg-cell cg-row-label">Copilot – Código</div>
+      <div class="cg-cell">2.000 completions/mês ✅</div>
+      <div class="cg-cell">Ilimitado + agente de código</div>
+
+      <div class="cg-cell cg-row-label">n8n – Automação</div>
+      <div class="cg-cell">Self-host gratuito e ilimitado ✅</div>
+      <div class="cg-cell">Cloud gerenciado, suporte</div>
+
+      <div class="cg-cell cg-row-label" style="border:none">💡 Estratégia</div>
+      <div class="cg-cell" style="border:none;color:var(--green)">Gemini + Copilot free + n8n self-host = produtivo</div>
+      <div class="cg-cell" style="border:none;color:var(--gold)">ChatGPT Plus + Claude Pro = máxima potência</div>
+    </div>
+  </div>
+
+  <!-- ══════════ SLIDE 9: PLANO DE ESTUDOS ══════════ -->
+  <div class="slide" data-index="8">
+    <div class="tag">Plano de Estudos</div>
+    <h2>Sua <span class="gradient-text">Jornada de 12 Meses</span></h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot m1">M<br>1–3</div>
+        <div class="tl-content">
+          <h3>Fundamentos + Alura IA para Negócios</h3>
+          <p>Comece pela trilha de IA para Negócios na Alura. Aprenda Python básico, Prompt Engineering e automatize tarefas do dia a dia com ChatGPT e Gemini. Meta: primeiros projetos de automação para clientes.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot m2">M<br>4–6</div>
+        <div class="tl-content">
+          <h3>DeepLearning.AI — Machine Learning Specialization</h3>
+          <p>Aprofunde com Andrew Ng: regressão, classificação, redes neurais. Faça o curso "AI for Everyone" primeiro (1 semana) para construir visão de negócio. Projetos práticos com Python.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot m3">M<br>7–9</div>
+        <div class="tl-content">
+          <h3>Agentes de IA + AWS Skill Builder</h3>
+          <p>Construa agentes com LangChain/LangGraph. Inicie trilha AWS Generative AI (grátis). Aprenda a integrar modelos em pipelines reais. Crie primeiros produtos de IA para vender.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot m4">M<br>10–12</div>
+        <div class="tl-content">
+          <h3>Especialização + Certificação AWS + Portfólio</h3>
+          <p>Prepare-se para a AWS ML Specialty. Monte portfólio público no GitHub e LinkedIn. Publique conteúdo sobre IA. Primeiros clientes ou posição como especialista.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ SLIDE 10: STACK IDEAL ══════════ -->
+  <div class="slide dark2-bg" data-index="9">
+    <div class="tag purple">Stack Recomendada</div>
+    <h2>Sua <span class="gradient-text">Stack de IA</span> Profissional</h2>
+    <p class="subtitle" style="margin-bottom:20px">Combinação otimizada para custo × produtividade em 2026</p>
+    <div class="grid grid-2" style="max-width:800px">
+      <div class="card">
+        <span class="card-icon">🧠</span>
+        <h3>Texto e Raciocínio</h3>
+        <p><strong style="color:var(--gold)">ChatGPT Plus</strong> (USD $20/mês) para criatividade + <strong style="color:var(--purple-light)">Claude Pro</strong> (USD $20/mês) para análise longa e código. Se precisar economizar: <strong style="color:var(--green)">Gemini Free</strong> cobre 80% dos casos.</p>
+      </div>
+      <div class="card purple">
+        <span class="card-icon">👨‍💻</span>
+        <h3>Desenvolvimento</h3>
+        <p><strong style="color:var(--purple-light)">GitHub Copilot Free</strong> (2k completions) é suficiente para começar. Para uso intenso: Pro USD $10/mês. Integra com VS Code, Cursor e JetBrains.</p>
+      </div>
+      <div class="card green">
+        <span class="card-icon">🎨</span>
+        <h3>Imagem e Design</h3>
+        <p><strong style="color:var(--green)">Midjourney Basic</strong> USD $10/mês para entregas profissionais. Alternativa gratuita: <strong style="color:var(--green)">Adobe Firefly Free</strong> ou <strong style="color:var(--green)">Canva AI</strong> (plano gratuito).</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">⚙️</span>
+        <h3>Automação</h3>
+        <p><strong style="color:var(--gold)">n8n self-hosted</strong> (gratuito) para fluxos ilimitados. Integra com WhatsApp, Gmail, Google Sheets, e APIs de LLMs. Ideal para produtos da Clica AI.</p>
+      </div>
+    </div>
+    <p style="margin-top:16px;font-size:12px;color:var(--muted)">💡 Custo mínimo profissional: ~R$160/mês (ChatGPT Plus) | Stack completa: ~R$350/mês</p>
+  </div>
+
+  <!-- ══════════ SLIDE 11: ALTERNATIVAS GRATUITAS ══════════ -->
+  <div class="slide" data-index="10">
+    <div class="tag green">Economia Inteligente</div>
+    <h2>Alternativas <span class="gradient-text">Gratuitas</span> que Funcionam</h2>
+    <p class="subtitle" style="margin-bottom:20px">Para quem está começando e quer maximizar resultados sem gasto inicial.</p>
+    <div class="grid grid-3" style="max-width:1000px">
+      <div class="card">
+        <span class="card-icon">🔷</span>
+        <h3>Gemini 1.5 Flash</h3>
+        <p>Grátis com conta Google. Contexto de 1M tokens, análise de PDFs, imagens, planilhas. Integra com Gmail e Google Workspace. <strong style="color:var(--green)">Excelente para trabalho diário.</strong></p>
+        <span class="price-badge free">100% Gratuito</span>
+      </div>
+      <div class="card purple">
+        <span class="card-icon">👨‍💻</span>
+        <h3>GitHub Copilot Free</h3>
+        <p>2.000 completions de código + 50 chats/mês. Acesso a Claude e OpenAI Codex. Para programadores iniciantes, <strong style="color:var(--green)">é mais que suficiente.</strong></p>
+        <span class="price-badge free">100% Gratuito</span>
+      </div>
+      <div class="card green">
+        <span class="card-icon">🌊</span>
+        <h3>Perplexity Free</h3>
+        <p>Pesquisa com IA + fontes verificadas. 5 buscas Pro por dia. Para pesquisa de mercado, concorrência e geração de conteúdo embasado.</p>
+        <span class="price-badge free">Básico Gratuito</span>
+      </div>
+      <div class="card">
+        <span class="card-icon">🤖</span>
+        <h3>Claude.ai Free</h3>
+        <p>Melhor para análise de documentos longos, geração de código e criação de conteúdo. Limite diário, mas suficiente para uso moderado.</p>
+        <span class="price-badge free">Limite Diário</span>
+      </div>
+      <div class="card purple">
+        <span class="card-icon">🎨</span>
+        <h3>Adobe Firefly</h3>
+        <p>Geração de imagens com IA — plano grátis com 25 créditos/mês. Integra com Photoshop e Illustrator. Ótima alternativa ao Midjourney.</p>
+        <span class="price-badge free">25 créditos grátis</span>
+      </div>
+      <div class="card green">
+        <span class="card-icon">⚙️</span>
+        <h3>n8n Self-Hosted</h3>
+        <p>Automações ilimitadas rodando no seu servidor ou VPS (R$20–50/mês). Open-source, sem limites de uso. <strong style="color:var(--green)">Ideal para clientes PME.</strong></p>
+        <span class="price-badge free">Open Source</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ SLIDE 12: PRÓXIMOS PASSOS ══════════ -->
+  <div class="slide dark2-bg" data-index="11">
+    <div class="tag">Ação Imediata</div>
+    <h2>Seus <span class="gradient-text">Próximos Passos</span></h2>
+    <p class="subtitle" style="margin-bottom:24px">Esta semana, Eder. Não amanhã.</p>
+    <div class="final-grid">
+      <div class="action-card">
+        <div class="step-num">1</div>
+        <strong>Esta semana</strong>
+        Assine Alura (R$97/mês) e complete o módulo "IA para Negócios" nos primeiros 7 dias.
+      </div>
+      <div class="action-card">
+        <div class="step-num">2</div>
+        <strong>Semana 2</strong>
+        Ative GitHub Copilot Free + Gemini. Configure VS Code com as extensões de IA. Comece a programar com apoio de IA.
+      </div>
+      <div class="action-card">
+        <div class="step-num">3</div>
+        <strong>Mês 1</strong>
+        Publique seu primeiro projeto no LinkedIn. Documente seu aprendizado. Mostre ao mercado que você está evoluindo.
+      </div>
+      <div class="action-card">
+        <div class="step-num">4</div>
+        <strong>Mês 3</strong>
+        Inicie DeepLearning.AI no Coursera. Com 3 meses de Alura, você já terá base suficiente para absorver o conteúdo avançado.
+      </div>
+    </div>
+    <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+      <a href="https://www.alura.com.br/cursos-online-inteligencia-artificial" target="_blank" class="cta-btn purple-btn">🇧🇷 Assinar Alura</a>
+      <a href="https://www.coursera.org/specializations/machine-learning-introduction" target="_blank" class="cta-btn">🏫 DeepLearning.AI</a>
+      <a href="https://aws.amazon.com/training/learn-about/machine-learning/" target="_blank" class="cta-btn" style="background:linear-gradient(135deg,var(--green),#15803d);color:#fff;">☁️ AWS Skill Builder</a>
+    </div>
+  </div>
+
+  <!-- ══════════ SLIDE 13: ENCERRAMENTO ══════════ -->
+  <div class="slide cover" data-index="12">
+    <div class="cover-ring ring1"></div>
+    <div class="cover-ring ring2"></div>
+    <div class="tag">Conclusão</div>
+    <h2>O mercado de IA não espera.<br><span class="gradient-text">Você tem tudo para ser referência.</span></h2>
+    <p class="subtitle" style="margin-top:16px;max-width:560px">Eder, com sua experiência em negócios digitais e a Clica AI como laboratório vivo, você está em posição privilegiada para dominar IA antes que a maioria perceba o tamanho dessa oportunidade.</p>
+    <div class="stat-row" style="margin-top:32px">
+      <div class="stat"><div class="num">R$97</div><div class="lbl">Investimento mínimo/mês</div></div>
+      <div class="stat"><div class="num">12</div><div class="lbl">Meses até profissional</div></div>
+      <div class="stat"><div class="num">∞</div><div class="lbl">Potencial de retorno</div></div>
+    </div>
+    <p style="margin-top:28px;font-size:13px;color:rgba(255,255,255,.3)">Apresentação gerada com Claude Code · Clica AI · 2026</p>
+  </div>
+
+</div>
+
+<!-- ── NAVIGATION ── -->
+<div class="nav">
+  <button id="prevBtn" onclick="navigate(-1)" disabled>←</button>
+  <div class="dots" id="dots"></div>
+  <span id="counter">1 / 13</span>
+  <button id="nextBtn" onclick="navigate(1)">→</button>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+  let current = 0;
+
+  // Build dots
+  const dotsContainer = document.getElementById('dots');
+  slides.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goTo(i);
+    dotsContainer.appendChild(d);
+  });
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    slides[current].classList.add('prev');
+    setTimeout(() => slides[current < n ? current : n + 1]?.classList.remove('prev'), 450);
+
+    if (n > current) {
+      slides[current].classList.remove('prev');
+    }
+
+    // Clean previous
+    slides.forEach(s => { s.classList.remove('active', 'prev'); });
+
+    current = n;
+    slides[current].classList.add('active');
+    updateUI();
+  }
+
+  function navigate(dir) {
+    const next = current + dir;
+    if (next < 0 || next >= total) return;
+    goTo(next);
+  }
+
+  function updateUI() {
+    // Counter
+    document.getElementById('counter').textContent = `${current + 1} / ${total}`;
+    document.getElementById('slide-label').textContent = `${current + 1} / ${total}`;
+
+    // Progress
+    document.getElementById('progress').style.width = `${((current + 1) / total) * 100}%`;
+
+    // Buttons
+    document.getElementById('prevBtn').disabled = current === 0;
+    document.getElementById('nextBtn').disabled = current === total - 1;
+
+    // Dots
+    document.querySelectorAll('.dot').forEach((d, i) => {
+      d.classList.toggle('active', i === current);
+    });
+  }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') navigate(1);
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') navigate(-1);
+    if (e.key === 'Home') goTo(0);
+    if (e.key === 'End') goTo(total - 1);
+  });
+
+  // Touch/swipe
+  let touchX = 0;
+  document.addEventListener('touchstart', e => touchX = e.touches[0].clientX);
+  document.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 50) navigate(dx < 0 ? 1 : -1);
+  });
+
+  updateUI();
+</script>
+</body>
+</html>

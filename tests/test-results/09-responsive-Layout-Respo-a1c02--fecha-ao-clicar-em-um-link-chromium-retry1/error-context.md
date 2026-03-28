@@ -1,0 +1,271 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - generic:
+    - banner [ref=e2]:
+      - generic [ref=e3]:
+        - link "⚡ Clica AI" [ref=e4] [cursor=pointer]:
+          - /url: /index.html
+          - generic [ref=e5]: ⚡
+          - generic [ref=e6]: Clica AI
+        - button "Menu" [active] [ref=e7] [cursor=pointer]
+    - link "WhatsApp" [ref=e11] [cursor=pointer]:
+      - /url: https://wa.me/553531959999
+      - img [ref=e12]
+  - generic [ref=e14]:
+    - img "Inteligência Artificial Futurista" [ref=e16]
+    - generic [ref=e17]:
+      - generic [ref=e18]: O futuro é agora
+      - heading "Transforme seu negócio com o poder da Inteligência Artificial" [level=1] [ref=e19]
+      - paragraph [ref=e20]: Agentes de IA autônomos, automação de processos e consultoria especializada para empresas que querem crescer sem limites.
+      - generic [ref=e21]:
+        - link "💬 Falar com especialista" [ref=e22] [cursor=pointer]:
+          - /url: https://wa.me/553531959999
+        - link "Ver serviços →" [ref=e23] [cursor=pointer]:
+          - /url: servicos.html
+  - generic [ref=e26]:
+    - generic [ref=e27]:
+      - generic [ref=e28]: O problema
+      - heading "Seu negócio ainda opera no modo manual?" [level=2] [ref=e29]
+      - paragraph [ref=e30]: Enquanto você gasta horas em tarefas repetitivas, seus concorrentes já estão usando IA para trabalhar mais rápido, errar menos e atender melhor.
+      - list [ref=e31]:
+        - listitem [ref=e32]:
+          - generic [ref=e33]: ✗
+          - text: Processos lentos que poderiam ser automatizados
+        - listitem [ref=e34]:
+          - generic [ref=e35]: ✗
+          - text: Equipe sobrecarregada com tarefas de baixo valor
+        - listitem [ref=e36]:
+          - generic [ref=e37]: ✗
+          - text: Atendimento limitado ao horário comercial
+        - listitem [ref=e38]:
+          - generic [ref=e39]: ✗
+          - text: Decisões baseadas em feeling, não em dados
+    - img "Processos manuais e ineficientes" [ref=e41]
+  - generic [ref=e44]:
+    - img "Clica AI — Solução em IA" [ref=e46]
+    - generic [ref=e47]:
+      - generic [ref=e48]: A solução
+      - heading "A Clica AI cuida da tecnologia enquanto você cuida do negócio" [level=2] [ref=e49]
+      - paragraph [ref=e50]: Implementamos inteligência artificial sob medida para o seu contexto. Sem complicação, sem burocracia — só resultado.
+      - list [ref=e51]:
+        - listitem [ref=e52]:
+          - generic [ref=e53]: ✦
+          - text: Agentes de IA que trabalham 24h por dia, 7 dias por semana
+        - listitem [ref=e54]:
+          - generic [ref=e55]: ✦
+          - text: Automação que elimina tarefas repetitivas de vez
+        - listitem [ref=e56]:
+          - generic [ref=e57]: ✦
+          - text: Consultoria especializada do diagnóstico à implementação
+        - listitem [ref=e58]:
+          - generic [ref=e59]: ✦
+          - text: Treinamento para sua equipe dominar as ferramentas
+  - generic [ref=e61]:
+    - generic [ref=e62]:
+      - generic [ref=e63]: O que fazemos
+      - heading "Soluções de IA para cada desafio" [level=2] [ref=e64]
+      - paragraph [ref=e65]: Do diagnóstico à implementação, atuamos em todas as frentes da inteligência artificial aplicada aos negócios.
+    - generic [ref=e66]:
+      - generic [ref=e67]:
+        - generic [ref=e68]: 🤖
+        - heading "Agentes de IA" [level=3] [ref=e69]
+        - paragraph [ref=e70]: "Agentes autônomos que executam tarefas complexas: atendimento ao cliente, prospecção, análise de dados e muito mais — 24h por dia."
+        - link "Saiba mais →" [ref=e71] [cursor=pointer]:
+          - /url: servicos.html#agentes
+      - generic [ref=e72]:
+        - generic [ref=e73]: ⚡
+        - heading "Automação de Processos" [level=3] [ref=e74]
+        - paragraph [ref=e75]: Mapeamos seus processos e automatizamos tudo o que é repetitivo. Sua equipe foca no que realmente importa.
+        - link "Saiba mais →" [ref=e76] [cursor=pointer]:
+          - /url: servicos.html#automacao
+      - generic [ref=e77]:
+        - generic [ref=e78]: 🎯
+        - heading "Consultoria em IA" [level=3] [ref=e79]
+        - paragraph [ref=e80]: Diagnóstico completo do seu negócio e roadmap personalizado para adoção de IA com o máximo de retorno.
+        - link "Saiba mais →" [ref=e81] [cursor=pointer]:
+          - /url: servicos.html#consultoria
+      - generic [ref=e82]:
+        - generic [ref=e83]: 💻
+        - heading "Desenvolvimento de IA" [level=3] [ref=e84]
+        - paragraph [ref=e85]: "Criamos soluções customizadas: modelos treinados com seus dados, APIs de IA e integrações sob medida."
+        - link "Saiba mais →" [ref=e86] [cursor=pointer]:
+          - /url: servicos.html#desenvolvimento
+      - generic [ref=e87]:
+        - generic [ref=e88]: 🎓
+        - heading "Treinamento em IA" [level=3] [ref=e89]
+        - paragraph [ref=e90]: Capacitamos sua equipe para usar IA no dia a dia — do básico ao avançado, com foco prático e aplicado.
+        - link "Saiba mais →" [ref=e91] [cursor=pointer]:
+          - /url: servicos.html#treinamento
+    - link "Ver todos os serviços →" [ref=e93] [cursor=pointer]:
+      - /url: servicos.html
+  - generic [ref=e95]:
+    - generic [ref=e96]:
+      - generic [ref=e97]: Nosso impacto
+      - heading "Resultados que falam por si" [level=2] [ref=e98]
+    - generic [ref=e99]:
+      - generic [ref=e100]:
+        - generic [ref=e101]: 50+
+        - generic [ref=e102]: Empresas atendidas
+      - generic [ref=e103]:
+        - generic [ref=e104]: 10x
+        - generic [ref=e105]: Ganho médio de produtividade
+      - generic [ref=e106]:
+        - generic [ref=e107]: 70%
+        - generic [ref=e108]: Redução em tarefas manuais
+      - generic [ref=e109]:
+        - generic [ref=e110]: 24/7
+        - generic [ref=e111]: Operação dos agentes de IA
+  - generic [ref=e113]:
+    - generic [ref=e114]:
+      - generic [ref=e115]: Cases de sucesso
+      - heading "Empresas que já estão no futuro" [level=2] [ref=e116]
+    - generic [ref=e117]:
+      - generic [ref=e118]:
+        - img "Case varejo" [ref=e119]
+        - generic [ref=e120]:
+          - generic [ref=e121]: Varejo
+          - heading "Agente de atendimento elimina fila de suporte" [level=3] [ref=e122]
+          - paragraph [ref=e123]: Rede varejista implementou agente de IA para triagem e resolução de chamados — 80% resolvidos sem intervenção humana.
+          - generic [ref=e124]: 80% de chamados resolvidos automaticamente
+      - generic [ref=e125]:
+        - img "Case indústria" [ref=e126]
+        - generic [ref=e127]:
+          - generic [ref=e128]: Indústria
+          - heading "Automação de relatórios reduz horas de trabalho" [level=3] [ref=e129]
+          - paragraph [ref=e130]: Indústria automatizou geração de relatórios operacionais que levavam 3 horas por dia — processo agora ocorre em 5 minutos.
+          - generic [ref=e131]: 97% de redução no tempo de geração de relatórios
+      - generic [ref=e132]:
+        - img "Case saúde" [ref=e133]
+        - generic [ref=e134]:
+          - generic [ref=e135]: Saúde
+          - heading "Agendamento inteligente aumenta ocupação da clínica" [level=3] [ref=e136]
+          - paragraph [ref=e137]: Clínica médica adotou agente de agendamento e confirmação. Taxa de ocupação da agenda subiu de 65% para 92%.
+          - generic [ref=e138]: +27pp de ocupação na agenda médica
+    - link "Ver todos os cases →" [ref=e140] [cursor=pointer]:
+      - /url: cases.html
+  - generic [ref=e142]:
+    - generic [ref=e143]:
+      - generic [ref=e144]: Conhecimento
+      - heading "Aprenda sobre IA aplicada" [level=2] [ref=e145]
+    - generic [ref=e146]:
+      - article [ref=e147]:
+        - link "Como automatizar o atendimento do WhatsApp com Agentes de IA" [ref=e148] [cursor=pointer]:
+          - /url: blog/post.html?slug=como-automatizar-atendimento-whatsapp-ia
+          - img "Como automatizar o atendimento do WhatsApp com Agentes de IA" [ref=e149]
+        - generic [ref=e150]:
+          - generic [ref=e151]: Tutoriais
+          - heading "Como automatizar o atendimento do WhatsApp com Agentes de IA" [level=3] [ref=e152]:
+            - link "Como automatizar o atendimento do WhatsApp com Agentes de IA" [ref=e153] [cursor=pointer]:
+              - /url: blog/post.html?slug=como-automatizar-atendimento-whatsapp-ia
+          - paragraph [ref=e154]: Descubra como criar um agente de IA que responde clientes automaticamente no WhatsApp — 24h por dia, sem intervenção humana.
+          - generic [ref=e156]: 📅 25 mar. 2026
+          - link "Ler artigo →" [ref=e157] [cursor=pointer]:
+            - /url: blog/post.html?slug=como-automatizar-atendimento-whatsapp-ia
+      - article [ref=e158]:
+        - link "As 5 tendências de IA que vão dominar os negócios em 2026" [ref=e159] [cursor=pointer]:
+          - /url: blog/post.html?slug=tendencias-ia-2026
+          - img "As 5 tendências de IA que vão dominar os negócios em 2026" [ref=e160]
+        - generic [ref=e161]:
+          - generic [ref=e162]: Tendências
+          - heading "As 5 tendências de IA que vão dominar os negócios em 2026" [level=3] [ref=e163]:
+            - link "As 5 tendências de IA que vão dominar os negócios em 2026" [ref=e164] [cursor=pointer]:
+              - /url: blog/post.html?slug=tendencias-ia-2026
+          - paragraph [ref=e165]: "Agentes autônomos, IA multimodal, automação cognitiva e mais: as tendências que estão moldando o futuro dos negócios."
+          - generic [ref=e167]: 📅 20 mar. 2026
+          - link "Ler artigo →" [ref=e168] [cursor=pointer]:
+            - /url: blog/post.html?slug=tendencias-ia-2026
+      - article [ref=e169]:
+        - 'link "Case: Como uma clínica médica aumentou 27% a ocupação da agenda com IA" [ref=e170] [cursor=pointer]':
+          - /url: blog/post.html?slug=case-clinica-medica-agendamento-ia
+          - 'img "Case: Como uma clínica médica aumentou 27% a ocupação da agenda com IA" [ref=e171]'
+        - generic [ref=e172]:
+          - generic [ref=e173]: Cases
+          - 'heading "Case: Como uma clínica médica aumentou 27% a ocupação da agenda com IA" [level=3] [ref=e174]':
+            - 'link "Case: Como uma clínica médica aumentou 27% a ocupação da agenda com IA" [ref=e175] [cursor=pointer]':
+              - /url: blog/post.html?slug=case-clinica-medica-agendamento-ia
+          - paragraph [ref=e176]: A história de como implementamos um agente de IA de agendamento que transformou a operação de uma clínica médica com 8 especialidades.
+          - generic [ref=e178]: 📅 15 mar. 2026
+          - link "Ler artigo →" [ref=e179] [cursor=pointer]:
+            - /url: blog/post.html?slug=case-clinica-medica-agendamento-ia
+    - link "Ver todos os artigos →" [ref=e181] [cursor=pointer]:
+      - /url: blog/index.html
+  - generic [ref=e183]:
+    - generic [ref=e184]: Pronto para começar?
+    - heading "Leve a IA para o seu negócio hoje mesmo" [level=2] [ref=e185]
+    - paragraph [ref=e186]: Fale com um especialista da Clica AI e descubra como a inteligência artificial pode transformar seus resultados.
+    - generic [ref=e187]:
+      - link "💬 Falar no WhatsApp" [ref=e188] [cursor=pointer]:
+        - /url: https://wa.me/553531959999
+      - link "Ver como funciona →" [ref=e189] [cursor=pointer]:
+        - /url: precos.html
+  - contentinfo [ref=e191]:
+    - generic [ref=e192]:
+      - generic [ref=e193]:
+        - link "⚡ Clica AI" [ref=e194] [cursor=pointer]:
+          - /url: /index.html
+          - generic [ref=e195]: ⚡
+          - generic [ref=e196]: Clica AI
+        - paragraph [ref=e197]: Transformamos negócios com inteligência artificial. Agentes de IA, automação e consultoria para empresas que querem estar no futuro.
+      - generic [ref=e198]:
+        - heading "Serviços" [level=4] [ref=e199]
+        - list [ref=e200]:
+          - listitem [ref=e201]:
+            - link "Agentes de IA" [ref=e202] [cursor=pointer]:
+              - /url: /servicos.html#agentes
+          - listitem [ref=e203]:
+            - link "Automação" [ref=e204] [cursor=pointer]:
+              - /url: /servicos.html#automacao
+          - listitem [ref=e205]:
+            - link "Consultoria" [ref=e206] [cursor=pointer]:
+              - /url: /servicos.html#consultoria
+          - listitem [ref=e207]:
+            - link "Desenvolvimento" [ref=e208] [cursor=pointer]:
+              - /url: /servicos.html#desenvolvimento
+          - listitem [ref=e209]:
+            - link "Treinamento" [ref=e210] [cursor=pointer]:
+              - /url: /servicos.html#treinamento
+      - generic [ref=e211]:
+        - heading "Empresa" [level=4] [ref=e212]
+        - list [ref=e213]:
+          - listitem [ref=e214]:
+            - link "Sobre Nós" [ref=e215] [cursor=pointer]:
+              - /url: /sobre.html
+          - listitem [ref=e216]:
+            - link "Cases" [ref=e217] [cursor=pointer]:
+              - /url: /cases.html
+          - listitem [ref=e218]:
+            - link "Blog" [ref=e219] [cursor=pointer]:
+              - /url: /blog/index.html
+          - listitem [ref=e220]:
+            - link "Preços" [ref=e221] [cursor=pointer]:
+              - /url: /precos.html
+          - listitem [ref=e222]:
+            - link "Contato" [ref=e223] [cursor=pointer]:
+              - /url: /contato.html
+      - generic [ref=e224]:
+        - heading "Contato" [level=4] [ref=e225]
+        - list [ref=e226]:
+          - listitem [ref=e227]:
+            - link "💬 WhatsApp" [ref=e228] [cursor=pointer]:
+              - /url: https://wa.me/553531959999
+          - listitem [ref=e229]:
+            - link "✉️ E-mail" [ref=e230] [cursor=pointer]:
+              - /url: mailto:contato@clicaai.com.br
+          - listitem [ref=e231]:
+            - link "📍 Localização" [ref=e232] [cursor=pointer]:
+              - /url: /contato.html
+    - generic [ref=e233]:
+      - paragraph [ref=e234]: © 2026 Clica AI. Todos os direitos reservados.
+      - generic [ref=e235]:
+        - link "Instagram" [ref=e236] [cursor=pointer]:
+          - /url: "#"
+          - text: 📸
+        - link "LinkedIn" [ref=e237] [cursor=pointer]:
+          - /url: "#"
+          - text: 💼
+        - link "YouTube" [ref=e238] [cursor=pointer]:
+          - /url: "#"
+          - text: ▶️
+```
